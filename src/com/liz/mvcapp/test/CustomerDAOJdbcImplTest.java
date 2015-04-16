@@ -27,6 +27,8 @@ public class CustomerDAOJdbcImplTest {
 		System.out.println(customers);
 		
 	}
+	
+	
 	@Test
 	public void testSchoolC() {
 		CriteriaDrivingSchool cds = new CriteriaDrivingSchool("大", null);
