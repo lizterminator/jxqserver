@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/com/liz/mvcapp/dao/CriteriaCustomer.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/CriteriaDrivingSchool.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/CustomerDAO.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/DAO.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/DrivingSchoolDAO.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/impl/CustomerDAOJdbcImpl.java=UTF-8
+encoding//src/com/liz/mvcapp/dao/impl/DrivingSchoolDAOJdbcImpl.java=UTF-8
+encoding//src/com/liz/mvcapp/db/JdbcUtils.java=UTF-8
+encoding//src/com/liz/mvcapp/domain/Customer.java=UTF-8
+encoding//src/com/liz/mvcapp/domain/DrivingSchool.java=UTF-8
+encoding//src/com/liz/mvcapp/servlet/CustomerServlet.java=UTF-8
+encoding//src/com/liz/mvcapp/test/CustomerDAOJdbcImplTest.java=UTF-8
+encoding//src/com/liz/mvcapp/test/JdbcUtilsTest.java=UTF-8
+encoding/<project>=UTF-8
