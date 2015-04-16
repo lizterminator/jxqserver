@@ -26,6 +26,8 @@ public interface CustomerDAO {
 	
 	public Boolean delete(String phone);
 	
+	public String getPassword(String phone);
+	
 	public Boolean makeCheck(String phone, String checkNumber);
 	/**
 	 * 返回和 name 相等的记录数。

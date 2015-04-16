@@ -73,6 +73,14 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO{
 		return update(sql, customer.getName(),customer.getSchool(),customer.getEmail(),customer.getPassword(),customer.getPhone());
 	}
 
+	@Override
+	public String getPassword(String phone) {
+		String sql = "SELECT password FROM customers WHERE "+
+				 "phone = ?";
+	
+		return getForValue(sql, phone);
+	}
+
    
 	
 

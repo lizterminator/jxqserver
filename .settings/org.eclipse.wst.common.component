@@ -2,7 +2,7 @@
     <wb-module deploy-name="mvc">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="mvc"/>
         <property name="java-output-path" value="/mvc/build/classes"/>
+        <property name="context-root" value="jxnet"/>
     </wb-module>
 </project-modules>

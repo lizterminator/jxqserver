@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.liz.mvcapp.dao.CriteriaCustomer;
 import com.liz.mvcapp.dao.CustomerDAO;
 import com.liz.mvcapp.dao.impl.CustomerDAOJdbcImpl;
@@ -54,6 +58,7 @@ public class CustomerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");  
 		//1.获取ServletPath: /edit.do 或 /addCustomer.do
 		String servletPath = request.getServletPath();
 		
@@ -69,7 +74,7 @@ public class CustomerServlet extends HttpServlet {
 			method.invoke(this, request,response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 			response.sendRedirect("error.jsp");
 		}
 		
@@ -128,8 +133,7 @@ public class CustomerServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String school = request.getParameter("school");
 		String phone = request.getParameter("phone");
-		System.out.println("fuck");
-		System.out.println(name);
+		
 		//2.检验 name 是否已经被占用
 		
 		//2.1 调用 CustomerDAO 的 getCountWithName(String name)方法获取  name 在数据库中是否存在
@@ -168,16 +172,59 @@ public class CustomerServlet extends HttpServlet {
 		System.out.println("edit");
 	}
 	
-	
-	private void userRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		
 		long count = customerDAO.getCountWithPhone(phone);
-		response.setCharacterEncoding("utf-8");  
+		
+		PrintWriter out = response.getWriter();  
+        
+        
+        
+        if(count > 0 ){
+        	Customer customer = customerDAO.get(phone);
+        	System.out.println(customer);
+        	if(customerDAO.getPassword(phone).equals(password)){
+        		
+            	JSONObject json = new JSONObject(customer); 
+            	json.put("success", true);
+            	out.print(json);
+            	out.flush();  
+    	        out.close();  
+    			
+        	}else{
+        		JSONObject json = new JSONObject(); 
+            	json.put("success", false).put("message", "用户名或密码错误！");
+            	out.print(json);
+            	out.flush();  
+    	        out.close();  
+    	      
+        	}
+        	
+        }else{
+        	JSONObject json = new JSONObject(); 
+        	json.put("success", false).put("message", "用户名或密码错误！");
+        	
+        	out.print(json);
+        	out.flush();  
+	        out.close();  
+	        
+        }
+        
+	}
+	private void userRegister(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException {
+		String phone = request.getParameter("phone");
+		String password = request.getParameter("password");
+		
+		long count = customerDAO.getCountWithPhone(phone);
+		
         PrintWriter out = response.getWriter();  
+        JSONObject json = new JSONObject();
+        
 		if(count > 0){
-			out.print("{\"success\":\"false\"");
+			json.put("success", false).put("message", "该手机号已被注册！");
+			out.print(json);
 			out.flush();  
 	        out.close();  
 			return;
@@ -188,11 +235,17 @@ public class CustomerServlet extends HttpServlet {
 		customerDAO.save(customer);
 
 		
+		JSONArray array = new JSONArray();
+		JSONObject testJsonObject = new JSONObject("{'name':1}");
+		for (int i = 0; i < 2; i++) {
+			array.put(testJsonObject);
+		}
         //将数据拼接成JSON格式  
-        out.print("{\"yourPhone\":\"" + phone + "\",\"yourpassword\":\""+password+"\"}");  
-        out.flush();  
+		json.put("success", true).put("schools", array);
+
+        out.print(json);
+		out.flush();  
         out.close();  
-		
 		
 	}
 }

@@ -29,17 +29,17 @@
 	<div class="headerBar">
 		<div class="topBar">
 			<div class="comWidth">
-				<div class="leftArea">
+				<div class="leftArea" id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
 					<a href="login.html">[登录]</a>
 					<a href="register.html">[个人免费注册]</a>
-					<a href="jx_register.html">[驾校免费注册]</a>
+					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
 				</div>
-				<div class="rightArea">
-					<a href="#">[我的订单]</a>
-					<a href="#">[我的购物车]</a>
-					<a href="#">[联系客服]</a>
+				<div class="rightArea" id="headerRight">
+					<a href="orderList.html">[我的订单]</a>
+					<!-- <a href="#">[我的购物车]</a> -->
+					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
@@ -53,7 +53,7 @@
             	</div>
             	<div class="col-md-6" style="border:0px green solid;">
                  	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" class="search_text fl">
+					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
 					<input type="button" value="搜 索" class="search_btn fr">
 					</div>
             	</div>   
@@ -177,5 +177,7 @@
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;京ICP备09037834号&nbsp;&nbsp;&nbsp;京ICP证B1034-8373号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>   
+<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
+<script src="js/user.js"></script>
 </body>
 </html>

@@ -3,13 +3,14 @@
  * 
  */
 var User = (function () {
-
+	
+	var storage = sessionStorage || "请换更先进的浏览器哦！推荐Chrome";
 	//存储在Storage中的User的Key
 	var storageKeyName = "user";
 
 	/******Selectors,用户登录时候获取用户名密码等信息 login***/
 	var userLoginSlcts = [
-		"#userName",
+		"#phone",
 		"#password"
 	];
 	/*************************************************/
@@ -36,16 +37,16 @@ var User = (function () {
 	
 	/*************************************************/
 
-	var storage = localStorage || "请换更先进的浏览器哦！推荐Chrome";
+	var  searchSlcts = ["#keyword"];
 
 
 	/***************urls********************/
-	var loginUrl =  "login.do";
+	var loginUrl =  "userLogin.cu";
 	var registerUrl = "userRegister.cu";
 	var buyUrl = ""; 
 	var shoppingCarUrl = "";
 	var orderListUrl = "";
-	var searchUrl = "";
+	var searchUrl = "search.ds";
 	return{
 		
 		/**
@@ -62,7 +63,7 @@ var User = (function () {
 			var userItem = storage.getItem(storageKeyName);
 			if(!userItem){
 				//TODO:用户没登录过,跳转到登录页面
-				//
+				//this.goLogin();
 				return false;
 			}else{
 				user = JSON.parse(userItem);
@@ -84,16 +85,26 @@ var User = (function () {
 				loginCallback,
 				"json"
 			);
-
-			function loginCallback(data){
+			var that = this;
+			function loginCallback(data, textStatus, xhr){
 				//返回登录判断逻辑
-				if(data.sucess){//成功
-					//TODO: 
-					//将数据放入storage,跳转到主页,主页中检验storage中的值是否存在
-					//如果存在,则显示已经登录，若不存在,重新登录
-				}else{//失败
-
+				if(textStatus === "success"){
+					
+					if(data.success){//登陆成功
+						//TODO: 
+						//将数据放入storage,跳转到主页,主页中检验storage中的值是否存在
+						//如果存在,则显示已经登录，若不存在,重新登录
+						storage.setItem(storageKeyName,JSON.stringify(data));
+						
+						that.goIndex();
+					}else{//登陆失败
+						alert("登陆失败,"+data.message);
+						//that.goRegister();
+					}
+				}else{
+					alert("服务器连接失败！请联系管理员");
 				}
+				
 			}
 		},
 
@@ -110,21 +121,38 @@ var User = (function () {
 				registerCallback,
 				"json"
 			);
-
+			var that = this;
 			function registerCallback(data, textStatus, xhr){
 				//注册请求返回逻辑
-				console.log(data);
-				console.log(textStatus);
-				if(data.success){
-					
+				
+				
+				if(textStatus === "success"){
+					if(data.success){
+						
+						that.goLogin();
+					}else{
+						console.log(data);
+						alert(data.message);
+						//that.goRegister();
+					}
 				}else{
-
+					alert("服务器连接失败！请联系管理员");
 				}
+				
 				
 			}
 
 		},
-
+		goLogin: function(){
+			location.href = "login.html";
+		},
+		goRegister: function(){
+			location.href = "register.html";
+		},
+		
+		goIndex: function(){
+			location.href = "index.html";
+		},
 		edit: function(){
 			var params = this.getParams(userEditSlcts);
 			$.post(
@@ -197,10 +225,79 @@ var User = (function () {
 		 * 搜索,主页初始化时也调用
 		 * @return {[type]} [description]
 		 */
-		search: function(keyword){
+		search: function(){
+			var params = this.getParams(searchSlcts);
+			console.log(params);
+			$.post(
+				searchUrl,
+				params,
+				searchCallback,
+				"json"
+			);
 
+			function searchCallback(data, textStatus, xhr){
+				//修改用户信息请求返回逻辑
+				
+				console.log(data);
+				
+				function itemTemplate(config){
+					return "<div class='row'>" +
+								"<div class='col-md-7'>" +
+								"<a href='portfolio-item.html'>" +
+									"<img class='img-responsive img-hover' src='images/700x300.gif' alt=''>" +
+								"</a>" +
+							"</div>" +
+							"<div class='col-md-5 shortcuts'>" +
+								"<h3>"+config.name +"</h3>" +
+								"<img src='images/rmb_21.png'/>" +
+								"<span class='originPrice'>￥" +config.price+
+								"</span>" +
+								"<p>" + config.info+
+								"</p>" +
+								"<a class='jy_btn' href='item-detail.html?name=xx'>去抢购</a>" +
+								"<span class='orderDetial'><span class='countOfBuyers'>9</span>人已成交</span>" +
+							"</div>" +
+						"</div>" +
+						"<hr>";
+				}
+				
+				for(var i=0;i<data.schools.length;i++){
+					$("#main").append(itemTemplate(data.schools[i]));
+				}
+				
+				
+			}
 		}
 
 	}
 
 })();
+
+
+
+$(function(){
+	
+	var user = User.checkLogin();
+	console.log(user);
+	if(user){
+		var p = $("#headerLeft");
+		var children = p.children();
+		for(var i = 1,l=children.length;i<l;i++){
+			children[i].remove();
+		}
+		var sname = user.name||user.phone;
+		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
+		p.append("<a href='index.html' id='logout'>[登出]</a>");
+	}else{
+		//alert("请先登陆");
+	}
+	
+	$("#logout").click(function(){
+		User.logout();
+	});
+	
+	$(".search_btn").click(function(){
+		User.search();
+	});
+	
+});

@@ -18,17 +18,17 @@
 	<div class="headerBar">
 		<div class="topBar">
 			<div class="comWidth">
-				<div class="leftArea">
+				<div class="leftArea" id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
 					<a href="login.html">[登录]</a>
 					<a href="register.html">[个人免费注册]</a>
-					<a href="jx_register.html">[驾校免费注册]</a>
+					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
 				</div>
-				<div class="rightArea">
-					<a href="#">[我的订单]</a>
-					<a href="#">[我的购物车]</a>
-					<a href="#">[联系客服]</a>
+				<div class="rightArea" id="headerRight">
+					<a href="orderList.html">[我的订单]</a>
+					<!-- <a href="#">[我的购物车]</a> -->
+					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
             	</div>
             	<div class="col-md-6" style="border:0px green solid;">
                  	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" class="search_text fl">
+					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
 					<input type="button" value="搜 索" class="search_btn fr">
 					</div>
             	</div>   
@@ -151,6 +151,7 @@
 	<script src="thirdparty/DataTables-1.10.5/media/js/jquery.dataTables.js"></script>
 	<script src="thirdparty/DataTables-1.10.5/media/js/dataTables.bootstrap.js"></script>
 	<script src="js/jqBootstrapValidation.js"></script>
+	<script src="js/user.js"></script>
 	<script>
 		$(document).ready(function() {
 			var selected = [];

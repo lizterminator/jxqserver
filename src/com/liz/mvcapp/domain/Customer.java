@@ -93,6 +93,12 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 	}
+
+	public Customer(String password, String phone) {
+		super();
+		this.password = password;
+		this.phone = phone;
+	}
 	
 	
 

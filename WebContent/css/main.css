@@ -1,7 +1,11 @@
-/*公用*/
+/*鍏敤*/
 .comWidth{width:1000px; margin-left:auto; margin-right:auto;}
 .leftArea{float:left;}
-
+.leftArea a{
+	position: relative;
+	margin-left: 20px;
+	right: 20px;
+}
 .rightArea{float:right;}
 .rightArea a{
 	position: relative;
@@ -16,21 +20,21 @@
 .collection{background:url(../images/icon/collection.jpg) left center no-repeat; padding-left:19px; font-weight:bold;}
 .topBar a:hover{color:red;}
 
-/*logo---------------------------------------------------我修改了*/
+/*logo---------------------------------------------------鎴戜慨鏀逛簡*/
 .logoBar{height:98px; background-color:#1D7AD9;}
 .logo{padding-left:41px; padding-top:0px;}
 /*search*/
 .search_box{width:525px; padding-top:40px; padding-left:105px;}
 /*.search_text{width:350px;height:14px; line-height:14px; padding:11px 5px 10px; background-color:#FFF;}
 */
-.search_text{width:350px;height:35px; line-height:35px\9;/*css hack  \9 代表所有的ie浏览器*/ padding:0 10px; background-color:#FFF;}/*------------------------------------------------------------添加了border+++++*/
-.search_btn{width:70px; height:35px; font-size:18px; font-family:"Microsoft YaHei", "微软雅黑"; background-color:#FF8C00; color:#FFF;}
-/*购物车*/
-.shopCar{width:145px; height:35px;background-color:#FF8C00; margin-top:40px;font:14px/35px "Microsoft YaHei", "微软雅黑"; color:#FFF; margin-right:59px; display:inline;}
-.shopText{/*font-size:14px; font-family:"Microsoft YaHei", "微软雅黑"; line-height:35px;*/  height:100%; width:87px; border-right:#E27A00 solid 1px; background:url(../images/icon/shaoIcon.jpg) 10px center no-repeat; text-indent:40px;}
+.search_text{width:350px;height:35px; line-height:35px\9;/*css hack  \9 浠ｈ〃鎵�鏈夌殑ie娴忚鍣�*/ padding:0 10px; background-color:#FFF;}/*------------------------------------------------------------娣诲姞浜哹order+++++*/
+.search_btn{width:70px; height:35px; font-size:18px; font-family:"Microsoft YaHei", "寰蒋闆呴粦"; background-color:#FF8C00; color:#FFF;}
+/*璐墿杞�*/
+.shopCar{width:145px; height:35px;background-color:#FF8C00; margin-top:40px;font:14px/35px "Microsoft YaHei", "寰蒋闆呴粦"; color:#FFF; margin-right:59px; display:inline;}
+.shopText{/*font-size:14px; font-family:"Microsoft YaHei", "寰蒋闆呴粦"; line-height:35px;*/  height:100%; width:87px; border-right:#E27A00 solid 1px; background:url(../images/icon/shaoIcon.jpg) 10px center no-repeat; text-indent:40px;}
 .shopNum{width:27px; height:35px; border-left:#FF9C01 solid 1px; background:url(../images/icon/sj.jpg) 33px center no-repeat; text-align:right; padding-right:29px;}
 
-/*首页驾校简介面板*/
+/*棣栭〉椹炬牎绠�浠嬮潰鏉�*/
 .shortcuts{height:300px;display: block;background-color: white;}
 .shortcuts p{
 	display: block;
@@ -75,7 +79,7 @@
 	
 }
 
-/*底部*/
+/*搴曢儴*/
 .footer{text-align:center; background-color:#0d346b; line-height:24px; padding:25px 0;color:#fff;}
 .footer i{font-style:normal; margin:0 5px; }
 .footer a{color:#fff;}
@@ -87,9 +91,9 @@
 .hr_7{height:7px; overflow:hidden;}
 .hr_15{height:15px; overflow:hidden;}
 
-/*登陆*/
+/*鐧婚檰*/
 .login_logo .comWidth{width:460px;}
-.welcome_title{font:22px/85px "Microsoft YaHei", "微软雅黑"; color:#FFF; float:left; padding-left:24px;}
+.welcome_title{font:22px/85px "Microsoft YaHei", "寰蒋闆呴粦"; color:#FFF; float:left; padding-left:24px;}
 .loginBox{width:458px; border:#999 solid 1px; margin:10px auto; position:relative;}
 .login_cont{padding:15px 76px;}
 .l_tit{color:#666; line-height:20px;}
@@ -105,7 +109,7 @@
 .reg_link{width:115px; height:31px; /* background:url(../images/icon/red_link.jpg) left top no-repeat; */ position:relative; left:98px; top:20px;}
 .red_logo .comWidth{width:630px;}
 .regBox{width:628px; margin:10px auto; border:#CCC solid 1px;}
-.reg_item{font:14px/34px "宋体"; width:110px; text-align:right; float:left;}
+.reg_item{font:14px/34px "瀹嬩綋"; width:110px; text-align:right; float:left;}
 .reg_item i{color:red; font-style:normal; margin-right:5px;}
 .input_item{width:306px; float:left;}
 .regBox li{height:70px; vertical-align:top;}
@@ -192,7 +196,7 @@
 }
 
 
-/*购物车*/
+/*璐墿杞�*/
 .stepBox{width:396px; padding-top:26px;}
 .step{background:url(../images/step.jpg) left top no-repeat; height:19px;}
 .step_text{color:#FFF; font-size:12px; line-height:30px;}
@@ -203,7 +207,7 @@
 .step_text .active{color:#F3E402; font-weight:bold;}
 .shoppingCart{padding-top:10px;}
 .shopping_item{border:#ccc solid 1px;}
-.shopping_tit{height:31px; background:url(../images/shopping_bg.jpg) left top repeat-x;  color:#444444; font:16px/31px "Microsoft YaHei", "微软雅黑"; text-indent:12px; border-bottom:#E3E3E3 solid 1px;}
+.shopping_tit{height:31px; background:url(../images/shopping_bg.jpg) left top repeat-x;  color:#444444; font:16px/31px "Microsoft YaHei", "寰蒋闆呴粦"; text-indent:12px; border-bottom:#E3E3E3 solid 1px;}
 .padding_shop{padding:25px 30px;}
 .shopping_list_text{float:left; width:76px; line-height:24px;}
 .cart_tel,.input{vertical-align:middle;}
@@ -217,7 +221,7 @@
 .jian{padding:0 3px;}
 .affirm{width:114px; height:28px;  background:url(../images/sh_btn.jpg) left top no-repeat;}
 .radio{position:relative; top:3px; margin-right:4px;}
-.backCar{float:right; font-size:12px; font-family:"宋体"; margin-right:33px; color:#3377FF;}
+.backCar{float:right; font-size:12px; font-family:"瀹嬩綋"; margin-right:33px; color:#3377FF;}
 .backCar:hover{text-decoration:underline;}
 .cart_head{padding-top:5px;}
 .cart_head .cart_item{line-height:28px;}
@@ -229,7 +233,7 @@
 .t_subtotal{width:123px;}
 .t_red{color:red;}
 
-/*商品信息*/
+/*鍟嗗搧淇℃伅*/
 .cart_count{border-bottom:solid 1px #ccc;}
 .cart_count .cart_item{border-bottom:none;}
 .cart_count .t_price,
@@ -250,7 +254,7 @@
 .cart_rmb i{font-size:14px; color:#999; font-style:normal;}
 .cart_rmb span{font:bold 24px/1 Verdana; color:red;}
 .cart_btnBox{text-align:right;}
-.cart_btn{width:165px; height:33px; background-color:#FF8C00; font:18px/33px "Microsoft YaHei", "微软雅黑"; color:#FFF;}
+.cart_btn{width:165px; height:33px; background-color:#FF8C00; font:18px/33px "Microsoft YaHei", "寰蒋闆呴粦"; color:#FFF;}
 
 .jy_btn {
 	padding:10px 20px;
@@ -284,13 +288,7 @@
 	text-decoration:none;
 	
 }
-.jx_btn:link,.jy_btn:visited{
-	padding:10px 20px;
-	background-color:#0d346b;	
-	font-size:18px;
-	color:white;
-	text-decoration:none;
-}
+
 .jx_btn:hover{
 	padding:10px 20px;
 	background-color:#0d346b;	
