@@ -63,7 +63,7 @@ var User = (function () {
 			var userItem = storage.getItem(storageKeyName);
 			if(!userItem){
 				//TODO:用户没登录过,跳转到登录页面
-				//this.goLogin();
+				this.goLogin();
 				return false;
 			}else{
 				user = JSON.parse(userItem);
@@ -132,7 +132,7 @@ var User = (function () {
 						that.goLogin();
 					}else{
 						console.log(data);
-						alert(data.message);
+						//alert(data.message);
 						//that.goRegister();
 					}
 				}else{
@@ -227,7 +227,6 @@ var User = (function () {
 		 */
 		search: function(){
 			var params = this.getParams(searchSlcts);
-			console.log(params);
 			$.post(
 				searchUrl,
 				params,
@@ -260,7 +259,7 @@ var User = (function () {
 						"</div>" +
 						"<hr>";
 				}
-				
+				$("#main").empty();
 				for(var i=0;i<data.schools.length;i++){
 					$("#main").append(itemTemplate(data.schools[i]));
 				}
@@ -277,7 +276,13 @@ var User = (function () {
 
 $(function(){
 	
-	var user = User.checkLogin();
+	console.log(location);
+	var user;
+	var noCheckLoginPath = ['index','login','detail','pay']; 
+	var checkPath;
+	if(location.pathname.indexOf("login") == -1 || location.pathname.indexOf("index") == -1){
+		user = User.checkLogin();
+	}
 	console.log(user);
 	if(user){
 		var p = $("#headerLeft");
