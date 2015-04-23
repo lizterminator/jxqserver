@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -183,6 +184,7 @@ public class CustomerServlet extends HttpServlet {
         
         
         if(count > 0 ){
+//        	HttpSession session = request.getSession();
         	Customer customer = customerDAO.get(phone);
         	System.out.println(customer);
         	if(customerDAO.getPassword(phone).equals(password)){

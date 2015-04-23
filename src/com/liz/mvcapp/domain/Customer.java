@@ -66,10 +66,12 @@ public class Customer {
 		this.phone = phone;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", school=" + school
-				+ ", phone=" + phone + ", email=" + email +"]";
+		return "Customer [id=" + id + ", name=" + name + ", password="
+				+ password + ", email=" + email + ", school=" + school
+				+ ", phone=" + phone + "]";
 	}
 
 	public Customer(Integer id, String name, String school, String phone, String email, String password) {

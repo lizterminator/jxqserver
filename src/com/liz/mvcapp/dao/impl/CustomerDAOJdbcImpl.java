@@ -29,7 +29,7 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO{
 	@Override
 	public Customer get(String phone) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT id,name,school,phone,email FROM customers WHERE phone = ?";
+		String sql = "SELECT id,name,school,password,phone,email FROM customers WHERE phone = ?";
 		
 		return get(sql,phone);
 	}
