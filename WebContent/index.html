@@ -6,57 +6,57 @@
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
-	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
-	<script src="js/user.js"></script>
+	
 	
 </head>
 <body>
-	<div class="headerBar">
+    
+   
+	 <div class="headerBar container">
 		<div class="topBar">
-			<div class="comWidth">
-				<div class="leftArea" id="headerLeft">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
-					<a href="login.html">[登录]</a>
-					<a href="register.html">[个人免费注册]</a>
-					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
+					
 				</div>
-				<div class="rightArea" id="headerRight">
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
 					<a href="orderList.html">[我的订单]</a>
-					<!-- <a href="#">[我的购物车]</a> -->
 					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
-        <div style="background-color:#0d346b;width:100%;height:100px;">
+	</div>
        
-        <div class="container"  >
-			<div class="row" >
+      <div class="container"  >
+			<div class="row logoBar" >
             	
-            	<div class="col-md-2" style="border:0px red solid;text-align:right;">
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
             		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
             	</div>
-            	<div class="col-md-6" style="border:0px green solid;">
-                 	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
-					<input type="button" value="搜 索" class="search_btn fr">
-					</div>
-            	</div>   
-                <div class="col-md-3" style="border:0px green solid;">
-                 	<div class="shopCar fr">
-					<span class="shopText fl">购物车</span>
-					<span class="shopNum fl">0</span>
-					</div>
-            	</div>    	
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
         	</div>
-        </div>
-		</div>
-	</div>
+        </div> 
+	
 	
 	<hr>
 	<div class="container" id="main" >
 		<!-- Project One -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-7">
                 <a href="portfolio-item.html">
                     <img class="img-responsive img-hover" src="images/700x300.gif" alt="">
@@ -66,14 +66,14 @@
                 <h3>西安鹏翔驾校</h3>
                 <img src="images/rmb_21.png"/> 
                 <span class="originPrice">￥200</span>
-                <!-- <h4>sub</h4> -->
+                
                 <p>欢迎光临西安鹏翔驾校，鹏翔驾校电话：029-88221229，西安鹏翔驾校怎么样，价格贵不贵？鹏翔驾校好不好？鹏翔驾校地址：西安市长安区韦斗路西段
 西安市鹏翔汽车驾驶员培训学校隶属陕西鹏翔投资发展有限公司，由西安鹏翔驾驶员生态考试场合西安鹏翔驾驶员培训基地组成，位于长安区韦斗路西段，距高新区仅仅3公里，占地面积423亩，下设25个服务站。属陕西省一级驾培机构。 
 我校拥有一支经验丰富、技术过硬、纪律严明...</p>
                 <a class="jy_btn" href="item-detail.html">去抢购</a>
                 <span class="orderDetial"><span class="countOfBuyers">9</span>人已成交</span>
             </div>
-        </div>
+        </div>  -->
         <!-- /.row -->
 	
        
@@ -82,7 +82,7 @@
     </div>
     <!-- /.container -->
 <!-- Pagination -->
-        <div class="row text-center">
+      <!--  <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
@@ -108,14 +108,17 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>-->
         <!-- /.row -->
     <div class="footer">
 		<p><a href="#">驾校圈简介</a><i>|</i><a href="#">驾校圈公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：400-675-1234</p>
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;京ICP备09037834号&nbsp;&nbsp;&nbsp;京ICP证B1034-8373号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>
+	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
+	<script src="js/user.js"></script>
 	<script>
+	
 		User.search();
 	</script>
 </body>

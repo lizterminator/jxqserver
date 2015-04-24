@@ -8,48 +8,44 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<div class="headerBar">
+	 <div class="headerBar container">
 		<div class="topBar">
-			<div class="comWidth">
-				<div class="leftArea" id="headerLeft">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
-					<a href="login.html">[登录]</a>
-					<a href="register.html">[个人免费注册]</a>
-					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
 				</div>
-				<div class="rightArea" id="headerRight">
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
 					<a href="orderList.html">[我的订单]</a>
-					<!-- <a href="#">[我的购物车]</a> -->
 					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
-
-		 <div style="background-color:#0d346b;width:100%;height:100px;">
+	</div>
        
-        <div class="container"  >
-			<div class="row" >
+      <div class="container"  >
+			<div class="row logoBar" >
             	
-            	<div class="col-md-2" style="border:0px red solid;text-align:right;">
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
             		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
             	</div>
-            	<div class="col-md-6" style="border:0px green solid;">
-                 	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
-					<input type="button" value="搜 索" class="search_btn fr">
-					</div>
-            	</div>   
-                <div class="col-md-3" style="border:0px green solid;">
-                 	<div class="shopCar fr">
-					<span class="shopText fl">购物车</span>
-					<span class="shopNum fl">0</span>
-					</div>
-            	</div>    	
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
         	</div>
-        </div>
-		</div>
-	</div>
+        </div> 
 	
 	<hr>
 	   <div class="container">
@@ -59,26 +55,26 @@
                     <h3 class="panel-title">确认联系人信息</h3>
                   </div>
                   <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="payForm" action="" method="post">
                       <div class="form-group">
                         <label for="school" class="col-sm-2 control-label">选择学校</label>
                         <div class="col-lg-3">
                           <select class="form-control" name="school">
-                              <option>西电</option>
-                              <option>西外</option>
+                              <option value="xidian">西电</option>
+                              <option value="xiwai">西外</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">联系人姓名</label>
                         <div class="col-lg-3">
-                          <input type="text" class="form-control" id="name" placeholder="填写联系人姓名">
+                          <input type="text" class="form-control" name="contact" pattern="^([\u4E00-\uFA29]|[\uE7C7-\uE7F3])*$" id="contact" placeholder="填写联系人姓名" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label">联系人手机号码</label>
+                        <label for="phone" class="col-sm-2 control-label" >联系人手机号码</label>
                         <div class="col-lg-3">
-                          <input type="text" class="form-control" id="phone" placeholder="填写联系人手机号码">
+                          <input type="text" class="form-control" name="contactPhone" pattern="^1[3|4|5|8][0-9]\d{4,8}$" id="contactPhone" placeholder="填写联系人手机号码" required>
                         </div>
                       </div>
                       
@@ -86,7 +82,7 @@
                   </div>
                 </div>
 
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title">支付方式</h3>
                   </div>
@@ -103,35 +99,34 @@
                         </div>
                     </form>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title">预约清单</h3>
                   </div>
                   <div class="panel-body">
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <div class="form-group">
                             <label for="jx_name" class="col-sm-2 control-label">驾校名称</label>
                             <div class="col-lg-3">
-                              <input type="text" class="form-control" id="jx_name" value="鹏翔驾校" disabled>
+                              <input type="text" class="form-control" name="jx_name" id="jx_name" value="" form="payForm" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="local" class="col-sm-2 control-label">本地报名人数</label>
                             <div class="col-lg-3">
-                              <input type="text" class="form-control" id="local" placeholder="填写本地报名人数">
+                              <input type="number" max="20" min="0" name="local" class="form-control" value="0" form="payForm" id="local" placeholder="填写本地报名人数">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="not_local" class="col-sm-2 control-label">异地报名人数</label>
                             <div class="col-lg-3">
-                              <input type="text" class="form-control" id="not_local" placeholder="填写异地报名人数">
+                              <input type="number" max="20" min="0" name="notLocal" class="form-control" value="0" form="payForm" id="not_local" placeholder="填写异地报名人数">
                             </div>
                         </div>
 
-
-                    </form>
+					</div>
                   </div>
                 </div>
 
@@ -142,10 +137,10 @@
                   <div class="panel-body">
                     <div class="cart_count fr">
                         <div class="cart_rmb">
-                            <i>总计：</i><span>￥50.00</span>
+                            <i>总计：</i><span>￥00.00</span>
                         </div>
                         <div class="cart_btnBox">
-                            <input id="submitorder" type="button" class="cart_btn" value="提交订单">
+                            <input id="submitOrder" type="button" class="cart_btn" value="提交订单">
                         </div>
                     </div>
                   </div>
@@ -168,5 +163,6 @@
 </div>
 	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
 	<script src="js/user.js"></script>
+	<script src="js/pay.js"></script>
 </body>
 </html>

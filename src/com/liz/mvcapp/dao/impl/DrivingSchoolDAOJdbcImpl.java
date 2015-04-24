@@ -26,7 +26,7 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 	@Override
 	public DrivingSchool get(Integer id) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT id, name ,area,phone,email,location,price,discount,info FROM customers WHERE id = ?";
+		String sql = "SELECT id, name ,password,area,mobile,email,location,price,discount,info,sold,life FROM school WHERE id = ?";
 		
 		return get(sql,id);
 	}
@@ -37,13 +37,19 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 		String sql = "DELETE FROM customers WHERE id = ?";
 		update(sql, id);
 	}*/
-
-	@Override
-	public long getCountWithName(String name) {
-		// TODO Auto-generated method stub
-		String sql = "SELECT count(id) FROM customers WHERE name = ?";
+	
+	public DrivingSchool get(String mobile){
+		String sql = "SELECT id, name,password ,area,mobile,email,location,price,discount,info,sold,life FROM school WHERE mobile = ?";
 		
-		return getForValue(sql, name);
+		return get(sql,mobile);
+	}
+	
+	@Override
+	public long getCountWithMobile(String mobile) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT count(id) FROM school WHERE mobile = ?";
+		
+		return getForValue(sql, mobile);
 	}
 
 
@@ -57,6 +63,13 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 		//修改了CriteriaCustomer 的 getter 方法：使其返回的字符串中有'%%'
 		return getForList(sql, cds.getName(),cds.getArea());
 		//return null;
+	}
+
+	@Override
+	public Boolean addSold(Integer id,Integer x) {
+		String sql = "UPDATE school SET sold = sold+? WHERE id =?";
+		
+		return update(sql,x,id);
 	}
 
 	

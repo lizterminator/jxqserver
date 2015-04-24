@@ -19,67 +19,67 @@
 	.bianji a:hover {
 		opacity:0.7;	
 	}
-	#dingdancontent img {
+	.dingdancontent img {
 		width:150px;
 		height:120px;	
 	}
 	h3 {
 		font-family:microsoft YaHei;	
 	}
-	#dingdancontent {
+	.dingdancontent {
 		text-align:center;	
 	}
-	#dingdan_delete a,dingdan_delete a:visited{
+	.dingdan_delete a,dingdan_delete a:visited{
 		padding:10px 15px;
 		background-color:#FF8C00;	
-		font-size:24px;
+		font-size:18px;
 		color:white;
 		text-decoration:none;
 	}
 	</style>
+	<script>
+		//if(session)
+	</script>
 </head>
 <body>
-	<div class="headerBar">
+	 <div class="headerBar container">
 		<div class="topBar">
-			<div class="comWidth">
-				<div class="leftArea" id="headerLeft">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
-					<a href="login.html">[登录]</a>
-					<a href="register.html">[个人免费注册]</a>
-					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
 				</div>
-				<div class="rightArea" id="headerRight">
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
 					<a href="orderList.html">[我的订单]</a>
-					<!-- <a href="#">[我的购物车]</a> -->
 					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
-        <div style="background-color:#0d346b;width:100%;height:100px;">
+	</div>
        
-        <div class="container"  >
-			<div class="row" >
+      <div class="container"  >
+			<div class="row logoBar" >
             	
-            	<div class="col-md-2" style="border:0px red solid;text-align:right;">
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
             		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
             	</div>
-            	<div class="col-md-6" style="border:0px green solid;">
-                 	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
-					<input type="button" value="搜 索" class="search_btn fr">
-					</div>
-            	</div>   
-                <div class="col-md-3" style="border:0px green solid;">
-                 	<div class="shopCar fr">
-					<span class="shopText fl">购物车</span>
-					<span class="shopNum fl">0</span>
-					</div>
-            	</div>    	
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
         	</div>
-        </div>
-		</div>
-	</div>
+        </div> 
     
    
     <div style="width:100%;height:250px;border:0px black solid;background:url(images/xdbeijing.jpg);background-size:100% 100%;margin-top:0px;clear:left;padding-top:20px;">
@@ -102,8 +102,8 @@
                     </div>
             	</div>  
                 <div class="col-md-10" style="border:0px green solid;height:150px;">
-                	<span style="font-size:28px;font-family:microsoft YaHei;"> 学员昵称</span><br>
-                    <span style="font-size:20px;font-family:microsoft YaHei;">西安电子科技大学</span><br>
+                	<!-- <span style="font-size:28px;font-family:microsoft YaHei;"> 学员昵称</span><br>
+                    <span style="font-size:20px;font-family:microsoft YaHei;">西安电子科技大学</span><br> -->
                     <span class="bianji" ><a href="personal.html">编辑资料</a></span>
             	</div>         	
         	</div>
@@ -114,115 +114,8 @@
         <hr>
     <div class="container" >
      	<span style="font-size:36px;font-family:microsoft YaHei;">我的订单</span>
-		<!-- Project One -->
-        <div class="row" >
-            <div class="col-md-12" style="border:0px red solid;">
-            	<div class="panel panel-default">
-                
- 					 <div class="panel-heading" style="text-align:center;">
-    					
-                         <div class="row" >
-                         	<div class="col-md-2" >
-                            	<h3 class="panel-title">订单：2015-03-22</h3>
-                            </div>
-                            <div class="col-md-2" >
-                           	
-                            </div>
-                            <div class="col-md-1" >
-                           	<h4 >合计</h4>
-                            </div>
-                            <div class="col-md-1" >
-                           	<h4 >份数</h4>
-                            </div>
-                            <div class="col-md-6" >
-         
-                            </div>
-                           
-  						</div>
-  					</div>
-                    
-                    
-  					<div class="panel-body" id="dingdancontent" >
-                    	
-   						 <div class="row" >
-                         	<div class="col-md-2" style="border:0px red solid;height:120px;">
-                            	<img src="images/t01.jpg">
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaxiao">西安鹏翔驾校</h3>
-                            </div>
-                            <div class="col-md-1" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaxiaofenshu">5.00</h3>
-                            </div>
-                            <div class="col-md-1" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiage">1</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_fukuan">买家未付款</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaoyi">交易未完成</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<span id="dingdan_delete"><a href="JavaScript:void(0)" onclick="confirm('确定删除订单吗');">订单删除</a></span>
-                            </div>
-  						</div>
-                   		<hr>                    
-					</div>              
-            </div>
-            
-            <!--订单2-->
-          	<div class="panel panel-default">
-                
- 					 <div class="panel-heading" style="text-align:center;">	
-                         <div class="row" >
-                         	<div class="col-md-2" >
-                            	<h3 class="panel-title">订单：2015-03-22</h3>
-                            </div>
-                            <div class="col-md-2" >
-                            </div>
-                            <div class="col-md-1" >
-                           	<h4 >合计</h4>
-                            </div>
-                            <div class="col-md-1" >
-                           	<h4 >份数</h4>
-                            </div>
-                            <div class="col-md-6" >
-                            </div>  
-  						</div>
-  					</div>
-                    
-                    
-  					<div class="panel-body" id="dingdancontent" >
-                    	
-   						 <div class="row" >
-                         	<div class="col-md-2" style="border:0px red solid;height:120px;">
-                            	<img src="images/t01.jpg">
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaxiao">西安鹏翔驾校</h3>
-                            </div>
-                            <div class="col-md-1" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaxiaofenshu">5.00</h3>
-                            </div>
-                            <div class="col-md-1" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiage">1</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_fukuan">买家未付款</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<h3 id="dingdan_jiaoyi">交易未完成</h3>
-                            </div>
-                            <div class="col-md-2" style="border:0px green solid;height:120px;padding-top:50px;">
-                           	<span id="dingdan_delete"><a href="JavaScript:void(0)" onclick="confirm('确定删除订单吗？');">订单删除</a></span>
-                            </div>
-  						</div>
-                    	<hr>   
-					</div> 
-            </div>
-               
-            </div>
+		
+        <div id="orderList">
         </div>
 	</div>
     <div class="footer">
@@ -232,5 +125,6 @@
 </div>
 <script src="thirdparty/jquery/jquery-1.11.0.js"></script>
 <script src="js/user.js"></script>
+<script type="text/javascript" src="js/orderList.js"></script>
 </body>
 </html>

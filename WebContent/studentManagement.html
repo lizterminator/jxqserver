@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>驾校 | 管理</title>
+	<title>驾校 | 学员管理</title>
 
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="thirdparty/DataTables-1.10.5/media/css/dataTables.bootstrap.css">
@@ -15,48 +15,44 @@
 	
 </head>
 <body>
-	<div class="headerBar">
+	 <div class="headerBar container">
 		<div class="topBar">
-			<div class="comWidth">
-				<div class="leftArea" id="headerLeft">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
-					<a href="login.html">[登录]</a>
-					<a href="register.html">[个人免费注册]</a>
-					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
 				</div>
-				<div class="rightArea" id="headerRight">
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
 					<a href="orderList.html">[我的订单]</a>
-					<!-- <a href="#">[我的购物车]</a> -->
 					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
-
-		 <div style="background-color:#0d346b;width:100%;height:100px;">
+	</div>
        
-        <div class="container"  >
-			<div class="row" >
+      <div class="container"  >
+			<div class="row logoBar" >
             	
-            	<div class="col-md-2" style="border:0px red solid;text-align:right;">
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
             		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
             	</div>
-            	<div class="col-md-6" style="border:0px green solid;">
-                 	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
-					<input type="button" value="搜 索" class="search_btn fr">
-					</div>
-            	</div>   
-                <div class="col-md-3" style="border:0px green solid;">
-                 	<div class="shopCar fr">
-					<span class="shopText fl">购物车</span>
-					<span class="shopNum fl">0</span>
-					</div>
-            	</div>    	
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
         	</div>
-        </div>
-		</div>
-	</div>
+        </div> 
 	
 	<hr>
 
@@ -68,7 +64,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    欢迎你XX驾校
+                    欢迎您<span id="jx_name"></span>!
                     <small>学员预约查看/管理</small>
                 </h1>
             </div>
@@ -78,24 +74,22 @@
 					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th>姓名</th>
-								<th>年龄</th>
+								<th>联系人姓名</th>
 								<th>联系电话</th>
-								<th>身份证号</th>
 								<th>预约时间</th>
-								<th>是否本地</th>
+								<th>本地人数</th>
+								<th>异地人数</th>
 								<th>是否完成预约</th>
 							</tr>
 						</thead>
 
 						<tfoot>
 							<tr>
-								<th>姓名</th>
-								<th>年龄</th>
+								<th>联系人姓名</th>
 								<th>联系电话</th>
-								<th>身份证号</th>
 								<th>预约时间</th>
-								<th>是否本地</th>
+								<th>本地人数</th>
+								<th>异地人数</th>
 								<th>是否完成预约</th>
 							</tr>
 						</tfoot>
@@ -111,30 +105,32 @@
                 <h2 class="page-header">
                     确认预约
                 </h2>
-                <form name="confirm" id="confirm" novalidate>
+                <form name="confirm" id="confirm" action="check.ds" method="post" novalidate>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>学员姓名:</label>
-                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" name="name" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>学员手机号:</label>
-                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                            <input type="tel" class="form-control" name="phone" id="phone" required data-validation-required-message="Please enter your phone number.">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>学员预约号:</label>
-                            <input type="text" class="form-control" id="checknumber" required data-validation-required-message="Please enter your checknumber.">
+                            <input type="text" class="form-control" name="checknumber" id="checknumber" required data-validation-required-message="Please enter your checknumber.">
                         </div>
                     </div>
                     
+                    
+                    
                     <div id="success"></div>
                     <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary">确认预约</button>
+                    <button type="button" id="check" class="btn btn-primary">确认预约</button>
                 </form>
             </div>
 
@@ -155,19 +151,30 @@
 	<script>
 		$(document).ready(function() {
 			var selected = [];
+			var jx = JSON.parse(sessionStorage.getItem('jx'));
+			
+			if(!jx){
+				return;
+			}
+			
+			$('#jx_name').text(jx.name);
 			$('#example').dataTable( {
-				"ajax": "data/objects.txt",
+				"ajax": {
+					"url": "getOrdersInfo.ds?phone="+jx.mobile+"&jxpwd="+jx.password,
+					"dataSrc": function(json){
+						return json;
+					} 
+				},
 				"columns": [
 					{ "data": "name" },
-					{ "data": "age" },
 					{ "data": "phone" },
-					{ "data": "id_card" },
 					{ "data": "order_time" },
-					{ "data": "islocal" },
-					{ "data": "ischeck" }
+					{ "data": "local" },
+					{ "data": "notLocal" },
+					{ "data": "checked" }
 				],
 				 "createdRow": function( row, data, dataIndex ) {
-				    if ( data.ischeck == "是" ) {
+				    if ( data.checked == '是' ) {
 				      $(row).addClass( 'success' );
 				    } else{
 				    	$(row).addClass( 'warning' );
@@ -175,6 +182,43 @@
 				  }
 			} );
 
+			$('#check').click(function(){
+				$(this).prop("disabled",true);
+				
+				
+				var data ={
+						name: $('#name').val().trim(),
+						phone: $('#phone').val().trim(),
+						checknumber: $('#checknumber').val().trim(),
+						jxmobile: jx.mobile,
+						jxpassword: jx.password
+				}
+				
+				$.ajax({
+					url:"check.ds",
+					method:"post",
+					dataType: "json",
+					data: data,
+					success: successCallback,
+					error: errorCallback
+				});
+				var that = $(this);
+				function successCallback(data){
+					alert(data.msg);
+					that.prop("disabled",false);
+					
+					if(data.success){
+						location.reload();
+					}else{
+						
+					}
+					
+				}
+				function errorCallback(data){
+					alert("服务器错误,请联系管理员！");
+					that.prop("disabled",false);
+				}
+			});
 			
 		} );
 	</script>

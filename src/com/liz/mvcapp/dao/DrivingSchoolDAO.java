@@ -21,6 +21,9 @@ public interface DrivingSchoolDAO {
 	
 	public DrivingSchool get(Integer id);
 	
+	public DrivingSchool get(String mobile);
+	
+	public Boolean addSold(Integer id,Integer x);
 	//public void delete(Integer id);
 	
 	/**
@@ -28,5 +31,5 @@ public interface DrivingSchoolDAO {
 	 * @param name
 	 * @return
 	 */
-	public long getCountWithName(String name);
+	public long getCountWithMobile(String mobile);
 }

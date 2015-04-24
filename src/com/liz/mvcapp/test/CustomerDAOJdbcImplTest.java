@@ -10,16 +10,21 @@ import com.liz.mvcapp.dao.CriteriaCustomer;
 import com.liz.mvcapp.dao.CriteriaDrivingSchool;
 import com.liz.mvcapp.dao.CustomerDAO;
 import com.liz.mvcapp.dao.DrivingSchoolDAO;
+import com.liz.mvcapp.dao.OrderDao;
 import com.liz.mvcapp.dao.impl.CustomerDAOJdbcImpl;
 import com.liz.mvcapp.dao.impl.DrivingSchoolDAOJdbcImpl;
+import com.liz.mvcapp.dao.impl.OrderDAOJdbcImpl;
 import com.liz.mvcapp.domain.Customer;
 import com.liz.mvcapp.domain.DrivingSchool;
+import com.liz.mvcapp.domain.Order;
 
 public class CustomerDAOJdbcImplTest {
 
 	private CustomerDAO customerDAO = 
 			new CustomerDAOJdbcImpl();
 	private DrivingSchoolDAO drivingSchoolDAO = new DrivingSchoolDAOJdbcImpl();
+	
+	private OrderDao orderDAO = new OrderDAOJdbcImpl(); 
 	@Test
 	public void testgetfor() {
 		CriteriaCustomer cc = new CriteriaCustomer("l", null, null);
@@ -28,6 +33,13 @@ public class CustomerDAOJdbcImplTest {
 		
 	}
 	
+	@Test
+	public void testOrderList(){
+		/*List<Order> list = orderDAO.getAllByUserId(40);
+		System.out.println(list);*/
+		
+		orderDAO.check("1429802023178");
+	}
 	
 	@Test
 	public void testSchoolC() {

@@ -1,10 +1,10 @@
 /*鍏敤*/
-.comWidth{width:1000px; margin-left:auto; margin-right:auto;}
+.comWidth{margin-left:auto; margin-right:auto;}
 .leftArea{float:left;}
 .leftArea a{
 	position: relative;
-	margin-left: 20px;
-	right: 20px;
+	margin-right: 20px;
+	right: 10px;
 }
 .rightArea{float:right;}
 .rightArea a{
@@ -15,20 +15,25 @@
 .hide{display:none;}
 .show{display:block;}
 
+.headerBar{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 /*topBar*/
 .topBar{height:31px; background-color:#F7F7F7; line-height:31px;}
 .collection{background:url(../images/icon/collection.jpg) left center no-repeat; padding-left:19px; font-weight:bold;}
 .topBar a:hover{color:red;}
 
 /*logo---------------------------------------------------鎴戜慨鏀逛簡*/
-.logoBar{height:98px; background-color:#1D7AD9;}
+.logoBar{ background-color:#1D7AD9;}
 .logo{padding-left:41px; padding-top:0px;}
 /*search*/
-.search_box{width:525px; padding-top:40px; padding-left:105px;}
+.search_box{/* width:525px; */ padding-top:40px; padding-left:20px;}
 /*.search_text{width:350px;height:14px; line-height:14px; padding:11px 5px 10px; background-color:#FFF;}
 */
-.search_text{width:350px;height:35px; line-height:35px\9;/*css hack  \9 浠ｈ〃鎵�鏈夌殑ie娴忚鍣�*/ padding:0 10px; background-color:#FFF;}/*------------------------------------------------------------娣诲姞浜哹order+++++*/
-.search_btn{width:70px; height:35px; font-size:18px; font-family:"Microsoft YaHei", "寰蒋闆呴粦"; background-color:#FF8C00; color:#FFF;}
+.search_text{width:200px;height:35px; line-height:35px\9;/*css hack  \9 浠ｈ〃鎵�鏈夌殑ie娴忚鍣�*/ padding:0 10px; background-color:#FFF;border:1px green solid;}/*------------------------------------------------------------娣诲姞浜哹order+++++*/
+.search_btn{/* width:70px; height:35px; */ /* font-size:18px; */ font-family:"Microsoft YaHei", "寰蒋闆呴粦"; /* background-color:#FF8C00; color:#FFF; */}
 /*璐墿杞�*/
 .shopCar{width:145px; height:35px;background-color:#FF8C00; margin-top:40px;font:14px/35px "Microsoft YaHei", "寰蒋闆呴粦"; color:#FFF; margin-right:59px; display:inline;}
 .shopText{/*font-size:14px; font-family:"Microsoft YaHei", "寰蒋闆呴粦"; line-height:35px;*/  height:100%; width:87px; border-right:#E27A00 solid 1px; background:url(../images/icon/shaoIcon.jpg) 10px center no-repeat; text-indent:40px;}
@@ -262,7 +267,7 @@
 	font-size:18px;
 	color:white;
 	text-decoration:none;
-	
+	cursor: pointer;
 }
 .jy_btn:link,.jy_btn:visited{
 	padding:10px 20px;

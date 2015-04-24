@@ -8,48 +8,44 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<div class="headerBar">
+	 <div class="headerBar container">
 		<div class="topBar">
-			<div class="comWidth">
-				<div class="leftArea" id="headerLeft">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
 					<a href="#" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
-					<a href="login.html">[登录]</a>
-					<a href="register.html">[个人免费注册]</a>
-					<!-- <a href="jx_register.html">[驾校免费注册]</a> -->
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
 				</div>
-				<div class="rightArea" id="headerRight">
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
 					<a href="orderList.html">[我的订单]</a>
-					<!-- <a href="#">[我的购物车]</a> -->
 					<a href="#kefu">[联系客服]</a>
 				</div>
 			</div>
 		</div>
-
-		<div style="background-color:#0d346b;width:100%;height:100px;">
+	</div>
        
-        <div class="container"  >
-			<div class="row" >
+      <div class="container"  >
+			<div class="row logoBar" >
             	
-            	<div class="col-md-2" style="border:0px red solid;text-align:right;">
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
             		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
             	</div>
-            	<div class="col-md-6" style="border:0px green solid;">
-                 	<div class="search_box fl">
-					<input type="text" placeholder="驾校团购信息或学校" id="keyword" class="search_text fl">
-					<input type="button" value="搜 索" class="search_btn fr">
-					</div>
-            	</div>   
-                <div class="col-md-3" style="border:0px green solid;">
-                 	<div class="shopCar fr">
-					<span class="shopText fl">购物车</span>
-					<span class="shopNum fl">0</span>
-					</div>
-            	</div>    	
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
         	</div>
-        </div>
-		</div>
-	</div>
+        </div> 
 
 	
 
@@ -65,7 +61,7 @@
                     <li><a href="index.html">驾校圈</a>
                     </li>
                     <li><a href="index.html">西安驾校</a></li>
-                    <li class="active">鹏翔驾校</li>
+                    <li class="active" id="bc_sname"></li>
                 </ol>
             </div>
         </div>
@@ -73,7 +69,7 @@
 		<div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    【西安】 鹏翔驾校
+                    【西安】 <span id="s_name"></span>
                 </h1>
 
             </div>
@@ -120,37 +116,37 @@
             </div><!--col-6 -->
 			<div class="col-lg-6 des_content">
 				<div class="dl clearfix">
-					<div class="dt">圈圈价</div>
-					<div class="dd clearfix"><span class="des_money"><em>￥</em>5.00</span></div>
+					<div class="dt">预约价</div>
+					<div class="dd clearfix"><span class="des_money"><em>￥</em>0.00</span></div>
 					
 				</div>
 				<div class="dl clearfix">
 					<div class="dt">已售</div>
-					<div class="dd clearfix"><span class="des_sold_number"><em>100件</em></span><span class='pj'><a href="#">80</a>人评价</span></div>
+					<div class="dd clearfix"><span class="des_sold_number"><em id="sold"></em>件</span><!-- <span class='pj'><a href="#">80</a>人评价</span> --></div>
 					
 				</div>
 				<div class="dl clearfix">
 					<div class="dt">有效期至</div>
-					<div class="dd clearfix"><span class="des_sold_number"><em>2016/05/05</em></span></div>
+					<div class="dd clearfix"><span class="des_sold_number"><em id="life"></em></span></div>
 					
 				</div>
 				<hr>
-				<form class="form-inline" id="buy" name="buy" action="#" method="post">
+				<!-- <form class="form-inline" id="buy" name="buy" action="#" method="post">
 				  <div class="form-group">
-				    <!-- <label for="local_number">输入购买本地人数</label> -->
+				    <label for="local_number">输入购买本地人数</label>
 				    <input type="text" class="form-control" id="local_number" name="local_number" placeholder="输入购买本地人数">
 				  </div>
 				  <div class="form-group">
-				    <!-- <label for="not_local_number">Email</label> -->
+				    <label for="not_local_number">Email</label>
 				    <input type="text" class="form-control" id="not_local_number" name="not_local_number" placeholder="输入购买非本地人数">
 				  </div>
 				 <hr>
 
-				</form>
-					 <button type="submit" form="buy" class="ljqg" formmethod="post" formaction="pay.html">
+				</form> -->
+					 <button type="button" id="buy" form="buy" class="ljqg" >
 					 </button>
-					 <button type="submit" form="buy" class="shopping_btn" formmethod="post" formaction="#">
-					 </button>
+					 <!-- <button type="submit" form="buy" class="shopping_btn" formmethod="post" formaction="#">
+					 </button> -->
 					
 
 			</div>
@@ -291,6 +287,7 @@
 	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
 	<script src="thirdparty/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 	<script src="js/user.js"></script>
+	<script src="js/detail.js">
 	<script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed

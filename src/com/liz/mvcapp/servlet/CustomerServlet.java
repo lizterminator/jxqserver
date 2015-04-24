@@ -18,8 +18,11 @@ import org.json.JSONObject;
 
 import com.liz.mvcapp.dao.CriteriaCustomer;
 import com.liz.mvcapp.dao.CustomerDAO;
+import com.liz.mvcapp.dao.OrderDao;
 import com.liz.mvcapp.dao.impl.CustomerDAOJdbcImpl;
+import com.liz.mvcapp.dao.impl.OrderDAOJdbcImpl;
 import com.liz.mvcapp.domain.Customer;
+import com.liz.mvcapp.domain.Order;
 
 /**
  * 利用 *.cu收集相应的请求,代表收集customer的请求
@@ -29,7 +32,7 @@ public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private CustomerDAO customerDAO = new CustomerDAOJdbcImpl();
-	
+	private OrderDao orderDAO = new OrderDAOJdbcImpl(); 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -127,46 +130,7 @@ public class CustomerServlet extends HttpServlet {
 		//System.out.println("query");
 	}
 
-	private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		//1.获取请求参数
-		String name = request.getParameter("name");
-		String school = request.getParameter("school");
-		String phone = request.getParameter("phone");
-		
-		//2.检验 name 是否已经被占用
-		
-		//2.1 调用 CustomerDAO 的 getCountWithName(String name)方法获取  name 在数据库中是否存在
-		long count = customerDAO.getCountWithPhone(name);
-		
-		//2.2若返回值大于 0,则响应newcustomer.jsp页面 ：
-		//通过转发的方式来响应 newcustomer.jsp
-		if(count > 0){
-			//2.2.1 要求在newcustomer.jsp 页面显示一个错误消息：用户名 xxx 已经被占用,请重新选择！
-			//在 request 中放入一个属性 message:用户名 xxx 已经被占用,请重新选择！在页面上通过 request.getAttribute("message")
-			request.setAttribute("message", "用户名"+ name +"已经被占用,请重新选择！");
-			//2.2.2 newcustomer.jsp 的表单值可以回显
-			//通过 value="<%=request.getParameter("name") == null ?"":request.getParameter("name") %>"
-			//来进行回显
-			
-			//2.2.3 结束方法 ：return
-			request.getRequestDispatcher("/newcustomer.jsp").forward(request, response);
-			return ;
-			
-		}
-		
-		
-		//3. 若验证通过，则把表单参数封装为一个 Customer 对象 customer
-		Customer customer = new Customer(name, school, phone,"","");
-		System.out.println(customer);
-		//4.调用CustomerDAO 的  save(Customer customer) 执行保存操作
-		customerDAO.save(customer);
-		//5.重定向到success.jsp 页面:使用重定向可以避免出现表单的重复提交
-		response.sendRedirect("success.jsp");
-		
-	//	System.out.println(request.getParameter("name"));
-	}
+	
 	
 	private void edit(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -237,17 +201,55 @@ public class CustomerServlet extends HttpServlet {
 		customerDAO.save(customer);
 
 		
-		JSONArray array = new JSONArray();
+		/*JSONArray array = new JSONArray();
 		JSONObject testJsonObject = new JSONObject("{'name':1}");
 		for (int i = 0; i < 2; i++) {
 			array.put(testJsonObject);
-		}
+		}*/
         //将数据拼接成JSON格式  
-		json.put("success", true).put("schools", array);
+		json.put("success", true).put("msg", "注册成功");
 
         out.print(json);
 		out.flush();  
         out.close();  
 		
+	}
+	
+	private void getOrdersByUser(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException {
+		String phone = request.getParameter("phone");
+		String password = request.getParameter("password");
+		
+		long count = customerDAO.getCountWithPhone(phone);
+		
+		PrintWriter out = response.getWriter();  
+		JSONObject json = new JSONObject();
+        if(count > 0 ){
+//        	HttpSession session = request.getSession();
+        	Customer customer = customerDAO.get(phone);
+        	
+        	if(customerDAO.getPassword(phone).equals(password)){
+        		List<Order> orders =  orderDAO.getAllByUserId(customer.getId());
+        		
+        		System.out.println(orders);
+        		//JSONArray array = new JSONArray();
+        		
+        		//array.put(orders);
+        		
+        		json.put("success", true).put("orders", orders);
+        		out.print(json);
+        		out.flush();  
+                out.close();  
+        	}else{
+        		json.put("success", false);
+        		out.print(json);
+        		out.flush();  
+                out.close(); 
+        	}
+        }else{
+        	json.put("success", false);
+    		out.print(json);
+    		out.flush();  
+            out.close(); 
+        }
 	}
 }

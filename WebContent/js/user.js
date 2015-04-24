@@ -1,3 +1,42 @@
+
+$(function(){
+	
+	var user = JSON.parse(sessionStorage.getItem("user"));
+	if(user){
+		var p = $("#moveAble");
+//		var children = p.children();
+//		children.empty();
+		p.empty();
+		var sname = user.name||user.phone;
+		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
+		p.append("<a href='index.html' id='logout'>[登出]</a>");
+	}else{
+	}
+	
+	
+	var jx = JSON.parse(sessionStorage.getItem("jx"));
+	if(jx){
+		var p = $("#moveAble");
+//		var children = p.children();
+//		children.empty();
+		p.empty();
+		var sname = jx.name||jx.mobile;
+		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
+		p.append("<a href='index.html' id='logout'>[登出]</a>");
+	}else{
+	}
+	
+	$("#logout").click(function(){
+		User.logout();
+	});
+	
+	$(".search_btn").click(function(){
+		User.search();
+	});
+	
+});
+
+
 /**
  * 定义了对于普通用户的一些操作
  * 
@@ -13,12 +52,18 @@ var User = (function () {
 		"#phone",
 		"#password"
 	];
+	
+	var jxLoginSlcts = [
+  		"#mobile",
+  		"#password"
+  	];
 	/*************************************************/
 
 	/******Selectors,用户注册时候获取用户名密码等信息 register***/
 	var userRegisterSlcts = [
 		"#phone",
-		"#password"
+		"#password",
+		'#passwordAgain'
 		//"#email",
 		//"#school"
 	];
@@ -47,8 +92,12 @@ var User = (function () {
 	var shoppingCarUrl = "";
 	var orderListUrl = "";
 	var searchUrl = "search.ds";
+	var jx_loginUrl = "userLogin.ds";
 	return{
 		
+		getUser:function(){
+			return JSON.parse(storage.getItem(storageKeyName));
+		},
 		/**
 		 * 检查用户是否登录过
 		 * @param  {[type]} storage [description]
@@ -79,6 +128,14 @@ var User = (function () {
 		login: function(){
 			
 			var params = this.getParams(userLoginSlcts);
+			
+			var phone = params.phone;
+			var phonePattern = /^1[3|4|5|8][0-9]\d{8}$/;
+			if(!phonePattern.test(phone)){
+				alert("请输入正确的手机号码");
+				return;
+			}
+			
 			$.post(
 				loginUrl,
 				params,
@@ -95,7 +152,7 @@ var User = (function () {
 						//将数据放入storage,跳转到主页,主页中检验storage中的值是否存在
 						//如果存在,则显示已经登录，若不存在,重新登录
 						storage.setItem(storageKeyName,JSON.stringify(data));
-						
+						//window.history.back();
 						that.goIndex();
 					}else{//登陆失败
 						alert("登陆失败,"+data.message);
@@ -107,14 +164,71 @@ var User = (function () {
 				
 			}
 		},
-
+		jx_login: function(){
+			var params = this.getParams(jxLoginSlcts);
+			
+			var phone = params.mobile;
+			
+			
+			var phonePattern = /^1[3|4|5|8][0-9]\d{8}$/;
+			if(!phonePattern.test(phone)){
+				alert("请输入正确的手机号码");
+				return;
+			}
+			
+			$.post(
+				jx_loginUrl,
+				params,
+				loginCallback,
+				"json"
+			);
+			var that = this;
+			function loginCallback(data, textStatus, xhr){
+				//返回登录判断逻辑
+				if(textStatus === "success"){
+					
+					if(data.success){//登陆成功
+						//TODO: 
+						//将数据放入storage,跳转到主页,主页中检验storage中的值是否存在
+						//如果存在,则显示已经登录，若不存在,重新登
+						storage.setItem('jx',JSON.stringify(data));
+						/*if(localtion.pathname.indexOf("pay"))
+							window.history.back();
+						else*/
+						 location.href = 'studentManagement.html'
+					}else{//登陆失败
+						alert("登陆失败,"+data.message);
+						//that.goRegister();
+					}
+				}else{
+					alert("服务器连接失败！请联系管理员");
+				}
+				
+			}
+		},
 		logout: function(){
 			storage.clear();
 		},
 
 		register: function(){
 			var params = this.getParams(userRegisterSlcts);
-
+			
+			var phone = params.phone;
+			var password = params.password;
+			var passwordAgain = params.passwordAgain;
+			var phonePattern = /^1[3|4|5|8][0-9]\d{8}$/;
+			if(!phonePattern.test(phone)){
+				alert("请输入正确的手机号码");
+				return;
+			}
+			if(password.length<6 || password.length>12){
+				alert("请使用长度在6和12之间的密码哦！");
+				return;
+			}
+			if(!(password === passwordAgain)){
+				alert("两次密码输入不一致！");
+				return;
+			}
 			$.post(
 				registerUrl,
 				params,
@@ -129,10 +243,11 @@ var User = (function () {
 				if(textStatus === "success"){
 					if(data.success){
 						
+						alert(data.msg);
 						that.goLogin();
 					}else{
 						console.log(data);
-						//alert(data.message);
+						alert(data.msg);
 						//that.goRegister();
 					}
 				}else{
@@ -143,6 +258,9 @@ var User = (function () {
 			}
 
 		},
+		
+			
+	
 		goLogin: function(){
 			location.href = "login.html";
 		},
@@ -226,18 +344,33 @@ var User = (function () {
 		 * @return {[type]} [description]
 		 */
 		search: function(){
-			var params = this.getParams(searchSlcts);
+			if(window.location.pathname.indexOf('index')==-1){
+				var params = this.getParams(searchSlcts);
+				storage.setItem('keyword',JSON.stringify(params));
+				location.href='index.html';
+				return;
+			}
+			var keyword = storage.getItem('keyword');
+			var params;
+			if(keyword){
+				
+				params = JSON.parse(keyword);
+				
+			}else{
+				params = this.getParams(searchSlcts);
+				//storage.setItem('keyword',params[0]);
+			}
 			$.post(
 				searchUrl,
 				params,
 				searchCallback,
 				"json"
 			);
-
+			
 			function searchCallback(data, textStatus, xhr){
 				//修改用户信息请求返回逻辑
 				
-				console.log(data);
+				storage.setItem('keyword','');
 				
 				function itemTemplate(config){
 					return "<div class='row'>" +
@@ -248,12 +381,13 @@ var User = (function () {
 							"</div>" +
 							"<div class='col-md-5 shortcuts'>" +
 								"<h3>"+config.name +"</h3>" +
-								"<img src='images/rmb_21.png'/>" +
+//								"<span>免费！</span>"+
+//								"<img src='images/rmb_21.png'/>" +
 								"<span class='originPrice'>￥" +config.price+
 								"</span>" +
 								"<p>" + config.info+
 								"</p>" +
-								"<a class='jy_btn' href='item-detail.html?name=xx'>去抢购</a>" +
+								"<button id='jx_"+ config.id+"' class='jy_btn'>免费预约</button>" +
 								"<span class='orderDetial'><span class='countOfBuyers'>9</span>人已成交</span>" +
 							"</div>" +
 						"</div>" +
@@ -264,6 +398,10 @@ var User = (function () {
 					$("#main").append(itemTemplate(data.schools[i]));
 				}
 				
+				$('.jy_btn').click(function(){
+					storage.setItem("school",this.id.split('_')[1]);
+					location.href="item-detail.html";
+				});
 				
 			}
 		}
@@ -274,35 +412,3 @@ var User = (function () {
 
 
 
-$(function(){
-	
-	console.log(location);
-	var user;
-	var noCheckLoginPath = ['index','login','detail','pay']; 
-	var checkPath;
-	if(location.pathname.indexOf("login") == -1 || location.pathname.indexOf("index") == -1){
-		user = User.checkLogin();
-	}
-	console.log(user);
-	if(user){
-		var p = $("#headerLeft");
-		var children = p.children();
-		for(var i = 1,l=children.length;i<l;i++){
-			children[i].remove();
-		}
-		var sname = user.name||user.phone;
-		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
-		p.append("<a href='index.html' id='logout'>[登出]</a>");
-	}else{
-		//alert("请先登陆");
-	}
-	
-	$("#logout").click(function(){
-		User.logout();
-	});
-	
-	$(".search_btn").click(function(){
-		User.search();
-	});
-	
-});

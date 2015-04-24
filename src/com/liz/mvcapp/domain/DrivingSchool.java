@@ -18,10 +18,50 @@ public class DrivingSchool {
 	private double discount;
 	private String email;
 	
+	private Integer sold;
+	
+	private String life;
 	
 	
 	private String info;
 	
+	
+	public DrivingSchool(Integer id, String name, String password,
+			String mobile, String telephone, String area, String location,
+			double price, double discount, String email, Integer sold,
+			String life, String info) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.mobile = mobile;
+		this.telephone = telephone;
+		this.area = area;
+		this.location = location;
+		this.price = price;
+		this.discount = discount;
+		this.email = email;
+		this.sold = sold;
+		this.life = life;
+		this.info = info;
+	}
+
+	public Integer getSold() {
+		return sold;
+	}
+
+	public void setSold(Integer sold) {
+		this.sold = sold;
+	}
+
+	public String getLife() {
+		return life;
+	}
+
+	public void setLife(String life) {
+		this.life = life;
+	}
+
 	public String getMobile() {
 		return mobile;
 	}
