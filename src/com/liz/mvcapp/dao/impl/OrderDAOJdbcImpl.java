@@ -13,8 +13,8 @@ public class OrderDAOJdbcImpl extends DAO<Order> implements OrderDao{
 
 	@Override
 	public Boolean save(Order order) {
-		String sql = "INSERT INTO orders (userId,jxId,contact,contactPhone,local,notLocal,sum,orderNumber,checked,schoolName)VALUES(?,?,?,?,?,?,?,?,?,?)";
-		return update(sql, order.getUserId(),order.getJxId(),order.getContact(),order.getContactPhone(),order.getLocal(),order.getNotLocal(),order.getSum(),order.getOrderNumber(),0,order.getSchoolName());
+		String sql = "INSERT INTO orders (userId,jxId,contact,contactPhone,local,notLocal,sum,orderNumber,checked,schoolName,orderDate)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		return update(sql, order.getUserId(),order.getJxId(),order.getContact(),order.getContactPhone(),order.getLocal(),order.getNotLocal(),order.getSum(),order.getOrderNumber(),0,order.getSchoolName(),order.getOrderDate());
 	}
 
 	@Override

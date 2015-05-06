@@ -23,6 +23,7 @@ import com.liz.mvcapp.dao.impl.CustomerDAOJdbcImpl;
 import com.liz.mvcapp.dao.impl.OrderDAOJdbcImpl;
 import com.liz.mvcapp.domain.Customer;
 import com.liz.mvcapp.domain.Order;
+import com.liz.mvcapp.validate.Validate;
 
 /**
  * 利用 *.cu收集相应的请求,代表收集customer的请求
@@ -87,7 +88,7 @@ public class CustomerServlet extends HttpServlet {
 		
 	}
 	
-	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException  {
+	/*private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException  {
 		// TODO Auto-generated method stub
 		String idString =  request.getParameter("id");
 		int id = 0;
@@ -106,9 +107,9 @@ public class CustomerServlet extends HttpServlet {
 		response.sendRedirect("query.do");
 		//System.out.println("delete");
 		
-	}
+	}*/
 
-	private void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*private void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//获取模糊查询的请求参数
 		String name = request.getParameter("name");
@@ -129,11 +130,67 @@ public class CustomerServlet extends HttpServlet {
 		
 		//System.out.println("query");
 	}
-
+*/
 	
 	
-	private void edit(HttpServletRequest request, HttpServletResponse response) {
+	private void edit(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
+		String phone = request.getParameter("userPhone");
+		String password = request.getParameter("password");
+		String nickname = request.getParameter("nickname");
+		String name  = request.getParameter("name");
+		String sex = request.getParameter("sex");
+		String school = request.getParameter("school");
+		
+	
+		long count = customerDAO.getCountWithPhone(phone);
+		
+		PrintWriter out = response.getWriter();  
+		if(!Validate.checkPhone(phone)){
+			return;
+		}
+		if(count > 0 ){
+//        	HttpSession session = request.getSession();
+        	Customer customer = customerDAO.get(phone);
+        	//System.out.println(customer);
+        	if(customerDAO.getPassword(phone).equals(password)){
+        		System.out.println(customer);
+        		customer.setNickname(nickname);
+        		customer.setSchool(school);
+        		customer.setName(name);
+        		customer.setSex(sex);
+        		System.out.println(customer);
+        		customerDAO.edit(customer);
+        		
+            	JSONObject json = new JSONObject(customer);
+            	//JSONObject json = new JSONObject();
+            	
+            	json.put("success", true);
+            	json.put("msg","保存成功");
+            	out.print(json);
+            	out.flush();  
+    	        out.close();  
+    			
+        	}else{
+        		JSONObject json = new JSONObject(); 
+            	json.put("success", false).put("msg", "保存失败");
+            	out.print(json);
+            	out.flush();  
+    	        out.close();  
+    	      
+        	}
+        	
+        }else{
+        	JSONObject json = new JSONObject(); 
+        	json.put("success", false).put("message", "保存失败");
+        	
+        	out.print(json);
+        	out.flush();  
+	        out.close();  
+	        
+        }
+		
+		
 		System.out.println("edit");
 	}
 	
@@ -141,6 +198,9 @@ public class CustomerServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		
+		if(!Validate.checkPhone(phone)){
+			return;
+		}
 		long count = customerDAO.getCountWithPhone(phone);
 		
 		PrintWriter out = response.getWriter();  
@@ -151,9 +211,11 @@ public class CustomerServlet extends HttpServlet {
 //        	HttpSession session = request.getSession();
         	Customer customer = customerDAO.get(phone);
         	System.out.println(customer);
-        	if(customerDAO.getPassword(phone).equals(password)){
+        	if(customerDAO.getPassword(phone).equals(Validate.parseStrToMd5U16(password))){
         		
-            	JSONObject json = new JSONObject(customer); 
+            	JSONObject json = new JSONObject(customer);
+            	//JSONObject json = new JSONObject();
+            	
             	json.put("success", true);
             	out.print(json);
             	out.flush();  
@@ -183,13 +245,17 @@ public class CustomerServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		
+		if(!Validate.checkPhone(phone)){
+			return;
+		}
+		
 		long count = customerDAO.getCountWithPhone(phone);
 		
         PrintWriter out = response.getWriter();  
         JSONObject json = new JSONObject();
         
 		if(count > 0){
-			json.put("success", false).put("message", "该手机号已被注册！");
+			json.put("success", false).put("msg", "该手机号已被注册！");
 			out.print(json);
 			out.flush();  
 	        out.close();  
@@ -197,7 +263,7 @@ public class CustomerServlet extends HttpServlet {
 		}
 		Customer customer = new Customer();
 		customer.setPhone(phone);
-		customer.setPassword(password);
+		customer.setPassword(Validate.parseStrToMd5U16(password));
 		customerDAO.save(customer);
 
 		
@@ -218,6 +284,10 @@ public class CustomerServlet extends HttpServlet {
 	private void getOrdersByUser(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
+		
+		if(!Validate.checkPhone(phone)){
+			return;
+		}
 		
 		long count = customerDAO.getCountWithPhone(phone);
 		

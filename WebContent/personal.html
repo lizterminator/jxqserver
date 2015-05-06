@@ -74,14 +74,14 @@
             	<span class="ziliaogeshi">*昵称：</span> 
             </div>
             <div class="col-md-6" style="border:0px green solid;">
-                 <input type="text" class="form-control" id="user_name" name="user_name" placeholder="填写您的昵称">
+                 <input type="text" class="form-control" id="nickname" name="nickname" placeholder="填写您的昵称">
             </div>
         </div>
         <!-- /.row -->
 
         <hr>
         
-        <div class="row">
+        <!-- <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
             	<span class="ziliaogeshi">当前头像：</span> 
             </div>
@@ -89,7 +89,7 @@
                 <img src = "images/female.jpg" style="height:150px;">
             </div>
     	</div>
-        <hr>
+        <hr> -->
         
         <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
@@ -107,16 +107,16 @@
             </div>
             <div class="col-md-6" style="border:0px green solid;">
                 <label class="radio-inline">
-  					<input type="radio" name="sexOptions" id="inlineRadio1" value="option1"> 男
+  					<input type="radio" name="sexOptions" id="male" value="male"> 男
 				</label>
 				<label class="radio-inline">
-  					<input type="radio" name="sexOptions" id="inlineRadio2" value="option2"> 女
+  					<input type="radio" name="sexOptions" id="female" value="female"> 女
 				</label>
             </div>
     	</div>
         <hr>
         
-        <div class="row">
+        <!-- <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
             	<span class="ziliaogeshi">生日：</span> 
             </div>
@@ -134,18 +134,22 @@
 				</div>
             </div>
     	</div>
-        <hr>
+        <hr> -->
         
         <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
             	<span class="ziliaogeshi">学校：</span> 
             </div>
             <div class="col-md-6" style="border:0px green solid;">
-                <input type="text" class="form-control" id="schoolname" name="schoolname" placeholder="学校名称">
+          		<select class="form-control" name="school" id="school">
+                      <option value="xidian">西电</option>
+                      <!-- <option value="xiwai">西外</option> -->
+                </select>
+                <!-- <input type="text" class="form-control" id="schoolname" name="schoolname" placeholder="学校名称"> -->
             </div>
     	</div>
         <hr>
-        <div class="row">
+        <!-- <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
             	<span class="ziliaogeshi">*居住地：</span> 
             </div>
@@ -153,14 +157,14 @@
                 <input type="text" class="form-control" id="current_address" name="current_address" placeholder="填写您的当前居住地址">
             </div>
     	</div>
-        <hr>
+        <hr> -->
         <div class="row">
    			<div class="col-md-2" style="border:0px red solid;text-align:right;">
             	
             </div>
             <div class="col-md-10" style="border:0px green solid;">
                 <div class="cart_btnBox">
-                            <input id="submitorder" type="button" class="cart_btn" value="提交">
+                     <input id="savePersonalInfo" type="button" class="cart_btn" value="保存">
                 </div>
             </div>
     	</div>
@@ -176,5 +180,6 @@
 </div>   
 <script src="thirdparty/jquery/jquery-1.11.0.js"></script>
 <script src="js/user.js"></script>
+<script src="js/personal.js"></script>
 </body>
 </html>

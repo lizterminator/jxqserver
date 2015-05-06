@@ -1,6 +1,6 @@
 package com.liz.mvcapp.domain;
 
-import com.sun.corba.se.pept.transport.ContactInfo;
+
 
 public class Order {
 	private Integer userId;
@@ -17,6 +17,16 @@ public class Order {
 	
 	private Integer checked;
 	
+	private String orderDate;
+	
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
 	public String getSchoolName() {
 		return schoolName;
 	}
@@ -104,9 +114,14 @@ public class Order {
 		super();
 	}
 
+	
+
+	
+
 	public Order(Integer userId, Integer jxId, String contact,
 			String contactPhone, Integer local, Integer notLocal,
-			String schoolName, String orderNumber, double sum, Integer checked) {
+			String schoolName, String orderNumber, double sum, Integer checked,
+			String orderDate) {
 		super();
 		this.userId = userId;
 		this.jxId = jxId;
@@ -118,6 +133,7 @@ public class Order {
 		this.orderNumber = orderNumber;
 		this.sum = sum;
 		this.checked = checked;
+		this.orderDate = orderDate;
 	}
 
 	@Override
@@ -126,8 +142,10 @@ public class Order {
 				+ contact + ", contactPhone=" + contactPhone + ", local="
 				+ local + ", notLocal=" + notLocal + ", schoolName="
 				+ schoolName + ", orderNumber=" + orderNumber + ", sum=" + sum
-				+ ", checked=" + checked + "]";
+				+ ", checked=" + checked + ", orderDate=" + orderDate + "]";
 	}
+
+	
 
 	
 	

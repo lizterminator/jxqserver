@@ -3,6 +3,7 @@ package com.liz.mvcapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,7 @@ import com.liz.mvcapp.dao.impl.OrderDAOJdbcImpl;
 import com.liz.mvcapp.domain.Customer;
 import com.liz.mvcapp.domain.DrivingSchool;
 import com.liz.mvcapp.domain.Order;
+import com.liz.mvcapp.validate.Validate;
 
 /**
  * 利用 *.ds收集相应的请求
@@ -104,6 +106,13 @@ public class DrivingSchoolServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String schoolName = request.getParameter("schoolName");
 		
+		if(!Validate.checkPhone(contactPhone)){
+			return;
+		}
+		if(!Validate.checkPhone(userPhone)){
+			return;
+		}
+		
 		Integer jxId = 0;
 		Integer local = 0;
 		Integer notLocal = 0;
@@ -155,6 +164,10 @@ public class DrivingSchoolServlet extends HttpServlet {
         		order.setSum(0);
         		String orderNumber = ""+ date.getTime();
         		order.setOrderNumber(orderNumber);
+        		
+        		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+        		order.setOrderDate(ft.format(date));
+        	    System.out.println("Current Date: " + ft.format(date));  
         		
         		if(orderDAO.save(order)){
         			drivingSchoolDAO.addSold(jxId,local+notLocal);
@@ -226,7 +239,9 @@ public class DrivingSchoolServlet extends HttpServlet {
 	private void getOrdersInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String mobile = request.getParameter("phone"); 
 		String password = request.getParameter("jxpwd");
-		
+		if(!Validate.checkPhone(mobile)){
+			return;
+		}
 		
 		
 		long count = drivingSchoolDAO.getCountWithMobile(mobile);
@@ -240,14 +255,16 @@ public class DrivingSchoolServlet extends HttpServlet {
 			if(ds.getPassword().equals(password)){
 				
 				List<Order> orders = orderDAO.getAllByJxId(ds.getId());
-				
+				System.out.println(orders);
 				JSONArray array = new JSONArray();
 				for(int i=0;i<orders.size();i++){
 					Order order = orders.get(i);
+					System.out.println(order);
 					JSONObject json = new JSONObject();
 					json.put("name", order.getContact());
 					json.put("phone", order.getContactPhone());
-					json.put("order_time", "20150405");
+					System.out.println(order.getOrderDate());
+					json.put("order_time", order.getOrderDate());
 					json.put("local", order.getLocal());
 					json.put("notLocal", order.getNotLocal());
 					String checked = (order.getChecked()==1)?"是":"否";

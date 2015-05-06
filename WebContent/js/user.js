@@ -21,7 +21,8 @@ $(function(){
 //		children.empty();
 		p.empty();
 		var sname = jx.name||jx.mobile;
-		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
+		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>&nbsp&nbsp");
+		p.append("<a href='studentManagement.html'>[学员管理]</a>&nbsp&nbsp");
 		p.append("<a href='index.html' id='logout'>[登出]</a>");
 	}else{
 	}
@@ -375,23 +376,26 @@ var User = (function () {
 				function itemTemplate(config){
 					return "<div class='row'>" +
 								"<div class='col-md-7'>" +
-								"<a href='portfolio-item.html'>" +
-									"<img class='img-responsive img-hover' src='images/700x300.gif' alt=''>" +
-								"</a>" +
+									"<a href='portfolio-item.html'>" +
+										"<img class='img-responsive img-hover' src='images/700x300.gif' alt=''>" +
+									"</a>" +
+								"</div>" +
+								"<div class='col-md-5 shortcuts'>" +
+									"<h3>"+config.name +"<small>减免<span class='text-danger' style='font-size:23px'>" +
+									config.discount+"</span>元/人  多报多免哦</small></h3>" +
+	//								"<span>免费！</span>"+
+	//								"<img src='images/rmb_21.png'/>" +
+	//								"<span class='originPrice'>￥" +config.price+
+									//"<span class='originPrice'> 减免 "+"<span class='text-primary'>" +config.discount+"</span>元/人  多报多免哦"+
+									"</span><hr/>" +
+									
+									"<p>" + config.info+
+									"</p>" +
+									"<button id='jx_"+ config.id+"' class='jy_btn'>免费预约</button>" +
+									"<span class='orderDetial'><span class='countOfBuyers'>"+config.sold+"</span>人已成交</span>" +
+								"</div>" +
 							"</div>" +
-							"<div class='col-md-5 shortcuts'>" +
-								"<h3>"+config.name +"</h3>" +
-//								"<span>免费！</span>"+
-//								"<img src='images/rmb_21.png'/>" +
-								"<span class='originPrice'>￥" +config.price+
-								"</span>" +
-								"<p>" + config.info+
-								"</p>" +
-								"<button id='jx_"+ config.id+"' class='jy_btn'>免费预约</button>" +
-								"<span class='orderDetial'><span class='countOfBuyers'>9</span>人已成交</span>" +
-							"</div>" +
-						"</div>" +
-						"<hr>";
+						"<hr><br>";
 				}
 				$("#main").empty();
 				for(var i=0;i<data.schools.length;i++){
@@ -405,7 +409,6 @@ var User = (function () {
 				
 			}
 		}
-
 	}
 
 })();

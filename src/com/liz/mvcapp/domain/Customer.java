@@ -14,7 +14,9 @@ public class Customer {
 	
 	private String phone;
 	
+	private String sex;
 	
+	private String nickname;
 	
 	public String getPassword() {
 		return password;
@@ -22,6 +24,22 @@ public class Customer {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getEmail() {
@@ -71,19 +89,23 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", password="
 				+ password + ", email=" + email + ", school=" + school
-				+ ", phone=" + phone + "]";
+				+ ", phone=" + phone + ", sex=" + sex + ", nickname="
+				+ nickname + "]";
 	}
 
-	public Customer(Integer id, String name, String school, String phone, String email, String password) {
+	public Customer(Integer id, String name, String password, String email,
+			String school, String phone, String sex, String nickname) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password = password;
+		this.email = email;
 		this.school = school;
 		this.phone = phone;
-		this.email = email;
-		this.password = password;
+		this.sex = sex;
+		this.nickname = nickname;
 	}
-	
+
 	public Customer() {
 	}
 

@@ -11,6 +11,4 @@ encoding//src/com/liz/mvcapp/db/JdbcUtils.java=UTF-8
 encoding//src/com/liz/mvcapp/domain/Customer.java=UTF-8
 encoding//src/com/liz/mvcapp/domain/DrivingSchool.java=UTF-8
 encoding//src/com/liz/mvcapp/servlet/CustomerServlet.java=UTF-8
-encoding//src/com/liz/mvcapp/test/CustomerDAOJdbcImplTest.java=UTF-8
-encoding//src/com/liz/mvcapp/test/JdbcUtilsTest.java=UTF-8
 encoding/<project>=UTF-8

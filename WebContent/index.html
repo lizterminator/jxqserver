@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
-	
-	
+	<link rel="stylesheet" href="css/jiaxiao.css">
+	<script src="js/jiaxiao.js"></script>
 </head>
 <body>
     
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 	</div>
-       
+      
       <div class="container"  >
 			<div class="row logoBar" >
             	
@@ -51,10 +51,60 @@
             		
         	</div>
         </div> 
+         <hr/>
+        
 	
-	
-	<hr>
+	<div class="container">
+		<div class="row">
+            <div class="col-md-7">
+                <div id="tupian" style="width:100%;height:250px;border:0px red solid;">
+					<a href="JavaScript:xzurl()" ><img style="border:0px #0d346b dashed;width:100%;height:100%;" name="jiaxiaojihe" src="images/xl.png" alt="翔龙驾校欢迎你！"></a>
+					<div style="position:relative;top:-25px;left:85%;">
+					<a href="JavaScript:xl()" ><img name="xlyd" src="images/xlyd.png" /></a>
+					<a href="JavaScript:px()"><img name="pxyd" src="images/pxyd.png" /></a>
+					<a href="JavaScript:xx()"><img name="xxyd" src="images/xxyd.png" /></a>
+					</div>
+				</div>
+
+            </div>
+            <div class="col-md-5 shortcuts">
+               <div id="chanel" style="width:100%;height:250px;border:0px red solid;">
+					<div style="width:100%;height:40px;background-color:#0d346b;">
+						<ul>
+							<li id="newstagdh"  ><a href="#" onMouseOver="change('newstag')" >网站公告</a></li>
+							<li id="zhinantagdh"  ><a href="#" onMouseOver="change('zhinan')">学车指南</a></li>
+							
+						</ul>
+					</div>
+
+					<div id="newstag" style="width:100%;height:210px;background-color:#f3f6f9;">
+						<ul>
+							<li><a href="#">2015最新交规</a></li>
+
+							<li><a href="#">交通部门最近考试安排</a></li>
+
+							<li><a href="#">道路交通处罚条例</a></li>
+
+							<li><a href="#">车辆安全检查通知</a></li>
+
+						</ul>
+					</div>
+					<div id="zhinan"  style="width:100%;height:210px;background-color:#f3f6f9;">
+						<ul>
+							<li><a href="#">新手指南1</a></li>
+							<li><a href="#">新手指南2</a></li>
+							<li><a href="#">吐血整理易错集锦</a></li>
+							<li><a href="#">学车指南大全</a></li>
+						</ul>
+					</div>
+					
+				</div>
+            </div>
+        </div>
+	</div>
 	<div class="container" id="main" >
+		
+	
 		<!-- Project One -->
         <!-- <div class="row">
             <div class="col-md-7">
@@ -116,10 +166,16 @@
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>
 	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
+	<script src="thirdparty/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 	<script src="js/user.js"></script>
+	
+	
 	<script>
 	
 		User.search();
+		$('.carousel').carousel({
+	        interval: 5000 //changes the speed
+	    })
 	</script>
 </body>
 </html>

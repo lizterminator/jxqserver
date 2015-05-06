@@ -58,7 +58,7 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 	@Override
 	public List<DrivingSchool> getForListWithCriteriaDrivingSchool(
 			CriteriaDrivingSchool cds) {
-		String sql = "SELECT id, name, mobile, email,telephone, area, location,price, discount,info FROM school WHERE "+
+		String sql = "SELECT id, name, mobile, email,telephone, area, location,price, sold,discount,info FROM school WHERE "+
 				 "name LIKE ? OR area LIKE ?";
 		//修改了CriteriaCustomer 的 getter 方法：使其返回的字符串中有'%%'
 		return getForList(sql, cds.getName(),cds.getArea());

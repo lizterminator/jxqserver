@@ -29,7 +29,7 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO{
 	@Override
 	public Customer get(String phone) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT id,name,school,password,phone,email FROM customers WHERE phone = ?";
+		String sql = "SELECT * FROM customers WHERE phone = ?";
 		
 		return get(sql,phone);
 	}
@@ -69,8 +69,8 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO{
 
 	@Override
 	public Boolean edit(Customer customer) {
-		String sql = "UPDATE customers SET name = ?,school=?,email=?,password=? WHERE phone = ?";
-		return update(sql, customer.getName(),customer.getSchool(),customer.getEmail(),customer.getPassword(),customer.getPhone());
+		String sql = "UPDATE customers SET name = ?,school=?,nickname=?,sex=? WHERE phone = ?";
+		return update(sql, customer.getName(),customer.getSchool(),customer.getNickname(),customer.getSex(),customer.getPhone());
 	}
 
 	@Override
