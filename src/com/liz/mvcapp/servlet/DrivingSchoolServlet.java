@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdk.internal.org.objectweb.asm.tree.IntInsnNode;
+
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.liz.mvcapp.dao.CriteriaDrivingSchool;
@@ -222,7 +221,7 @@ public class DrivingSchoolServlet extends HttpServlet {
 		CriteriaDrivingSchool cds = new CriteriaDrivingSchool(keyword, keyword);
 		
 		List<DrivingSchool> list = drivingSchoolDAO.getForListWithCriteriaDrivingSchool(cds);
-		
+		System.out.println(list);
 		PrintWriter out = response.getWriter();  
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();

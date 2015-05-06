@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.liz.mvcapp.dao.CriteriaCustomer;
@@ -241,7 +240,7 @@ public class CustomerServlet extends HttpServlet {
         }
         
 	}
-	private void userRegister(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException {
+	private void userRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		
@@ -281,7 +280,7 @@ public class CustomerServlet extends HttpServlet {
 		
 	}
 	
-	private void getOrdersByUser(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException {
+	private void getOrdersByUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		

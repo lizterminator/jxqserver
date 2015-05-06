@@ -25,11 +25,21 @@ public class DrivingSchool {
 	
 	private String info;
 	
+	private String pic1;
 	
+	private String pic2;
+	
+	private String pic3;
+	
+	private String pic4;
+	
+	
+
 	public DrivingSchool(Integer id, String name, String password,
 			String mobile, String telephone, String area, String location,
 			double price, double discount, String email, Integer sold,
-			String life, String info) {
+			String life, String info, String pic1, String pic2, String pic3,
+			String pic4) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -44,7 +54,52 @@ public class DrivingSchool {
 		this.sold = sold;
 		this.life = life;
 		this.info = info;
+		this.pic1 = pic1;
+		this.pic2 = pic2;
+		this.pic3 = pic3;
+		this.pic4 = pic4;
 	}
+	
+	
+	public String getPic1() {
+		return pic1;
+	}
+
+
+	public void setPic1(String pic1) {
+		this.pic1 = pic1;
+	}
+
+
+	public String getPic2() {
+		return pic2;
+	}
+
+
+	public void setPic2(String pic2) {
+		this.pic2 = pic2;
+	}
+
+
+	public String getPic3() {
+		return pic3;
+	}
+
+
+	public void setPic3(String pic3) {
+		this.pic3 = pic3;
+	}
+
+
+	public String getPic4() {
+		return pic4;
+	}
+
+
+	public void setPic4(String pic4) {
+		this.pic4 = pic4;
+	}
+
 
 	public Integer getSold() {
 		return sold;
@@ -194,14 +249,19 @@ public class DrivingSchool {
 		this.discount = discount;
 	}
 
+
 	@Override
 	public String toString() {
 		return "DrivingSchool [id=" + id + ", name=" + name + ", password="
-				+ password + ", area=" + area + ", email=" + email
-				+ ", mobile=" + mobile + ", telephone=" + telephone
-				+ ", location=" + location + ", price=" + price + ", discount="
-				+ discount + ", info=" + info + "]";
+				+ password + ", mobile=" + mobile + ", telephone=" + telephone
+				+ ", area=" + area + ", location=" + location + ", price="
+				+ price + ", discount=" + discount + ", email=" + email
+				+ ", sold=" + sold + ", life=" + life + ", info=" + info
+				+ ", pic1=" + pic1 + ", pic2=" + pic2 + ", pic3=" + pic3
+				+ ", pic4=" + pic4 + "]";
 	}
+
+	
 
 	
 }

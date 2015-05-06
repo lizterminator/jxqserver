@@ -26,7 +26,7 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 	@Override
 	public DrivingSchool get(Integer id) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT id, name ,password,area,mobile,email,location,price,discount,info,sold,life FROM school WHERE id = ?";
+		String sql = "SELECT id, name ,password,area,mobile,email,location,price,discount,info,sold,life,pic2,pic3,pic4  FROM school WHERE id = ?";
 		
 		return get(sql,id);
 	}
@@ -58,7 +58,7 @@ public class DrivingSchoolDAOJdbcImpl extends DAO<DrivingSchool> implements Driv
 	@Override
 	public List<DrivingSchool> getForListWithCriteriaDrivingSchool(
 			CriteriaDrivingSchool cds) {
-		String sql = "SELECT id, name, mobile, email,telephone, area, location,price, sold,discount,info FROM school WHERE "+
+		String sql = "SELECT id, name, mobile, email,telephone, area, location,price, sold,discount,info,pic1 FROM school WHERE "+
 				 "name LIKE ? OR area LIKE ?";
 		//修改了CriteriaCustomer 的 getter 方法：使其返回的字符串中有'%%'
 		return getForList(sql, cds.getName(),cds.getArea());

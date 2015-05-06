@@ -377,7 +377,7 @@ var User = (function () {
 					return "<div class='row'>" +
 								"<div class='col-md-7'>" +
 									"<a href='portfolio-item.html'>" +
-										"<img class='img-responsive img-hover' src='images/700x300.gif' alt=''>" +
+										"<img class='img-responsive img-hover' src='"+config.pic1+"' alt=''>" +
 									"</a>" +
 								"</div>" +
 								"<div class='col-md-5 shortcuts'>" +

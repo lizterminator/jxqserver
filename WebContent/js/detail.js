@@ -33,6 +33,10 @@
 		
 		$('#sold').text(school.sold);
 		$('#life').text(school.life);
+		
+		$('#pic2').prop("src",school.pic2);
+		$('#pic3').prop("src",school.pic3);
+		$('#pic4').prop("src",school.pic4);
 	}
 	
 	
