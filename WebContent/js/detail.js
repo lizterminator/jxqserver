@@ -30,10 +30,10 @@
 		var school = JSON.parse(data);
 		$('#bc_sname').text(school.name);
 		$('#s_name').text(school.name);
-		
+		console.log(school);
 		$('#sold').text(school.sold);
 		$('#life').text(school.life);
-		
+		$('#pos').prop("src",school.location);
 		$('#pic2').prop("src",school.pic2);
 		$('#pic3').prop("src",school.pic3);
 		$('#pic4').prop("src",school.pic4);

@@ -42,10 +42,12 @@
 						"<div class='panel panel-default'>" +
 							"<div class='panel-heading' style='text-align:center;'>" +
 								"<div class='row' >" +
-									"<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4' >" +
+									"<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2' >" +
 										"<h4 >订单："+order.orderNumber +"</h4>" +
 									"</div>" +
-									
+									"<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2' >" +
+									"<h4 >下单时间</h4>" +
+									"</div>" +
 									"<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' >" +
 										"<h4 >份数</h4>" +
 									"</div>" +
@@ -60,15 +62,19 @@
 							"<div class='panel-body' class='dingdancontent' style='text-align:center;>" +
 								"<div class='row' >" +
 									
-									"<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4' style='height:120px;padding-top:50px;'>" +
+									"<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2' style='height:120px;padding-top:50px;'>" +
 										"<h3 >"+order.schoolName+"</h3>" +
+									"</div>" +
+									"<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2' style='height:120px;padding-top:50px;'>" +
+									"<h4>"+order.orderDate+"</h4>" +
 									"</div>" +
 									"<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='height:120px;padding-top:50px;'>" +
 										"<h3 >"+(parseInt(order.local)+parseInt(order.notLocal))+"</h3>" +
 									"</div>" +
 									"<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='height:120px;padding-top:50px;'>" +
-										"<h3 id='dingdan_jiage'>"+order.sum+"</h3>" +
+										"<h3 >"+order.sum+"</h3>" +
 									"</div>" +
+									
 									"<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4' style='height:120px;padding-top:50px;'>" +
 										"<h3 >"+msg+"</h3>" +
 									"</div>" +

@@ -17,12 +17,7 @@ body{
 	font-family:Microsoft YaHei,Verdana, Geneva, sans-serif;
 	
 }
-.toubu{
-	width:1000px;
-	height:110px;
-	border:1px #FCFCFC solid;
-	margin: 0 auto;	
-}
+
 
 p a:link {
 	text-decoration:none;
@@ -41,26 +36,8 @@ p a:hover {
 
 
 
-.first {
-	border:0px red solid;
-	width:1000px;	
-	height:250px;
-	margin: 20px auto 10px;
-}
-.second {
-	border:0px red solid;
-	width:1000px;	
-	height:300px;
-	margin: 20px auto 10px;
-	background-color:#f3f6f9;
-}
 
-.second img {
-	float:left;
-	width:650px;
-	height:300px;	
 
-}
 #biaoqian img {
 	position:relative;
 	top:20px;
@@ -272,7 +249,6 @@ footer {
 
 #chanel li {
 	float:left;	
-	margin-left:50px;
 	text-decoration:none;
 	margin-top:10px;
 	list-style:none;

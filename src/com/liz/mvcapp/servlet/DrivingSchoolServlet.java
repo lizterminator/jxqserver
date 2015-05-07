@@ -198,8 +198,11 @@ public class DrivingSchoolServlet extends HttpServlet {
 			id = Integer.parseInt(idString);
 			DrivingSchool ds = drivingSchoolDAO.get(id);
 			
-	        JSONObject json = new JSONObject(ds);
-			
+	        //JSONObject json = new JSONObject(ds);
+			JSONObject json = new JSONObject();
+			json.put("name",ds.getName()).put("sold", ds.getSold()).put("life",ds.getLife())
+			.put("pic2", ds.getPic2()).put("pic3", ds.getPic3()).put("pic4", ds.getPic4())
+			.put("location", ds.getLocation()).put("id", ds.getId());
 	        json.put("success", true);
 	        out.print(json);
 		} catch (Exception e) {
