@@ -5,7 +5,7 @@
 		
 		<!-- 指定连接数据源的基本属性 -->
 		<property name="user">root</property>
-		<property name="password">jxnethaha</property>
+		<property name="password"></property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<property name="characterEncoding">UTF-8</property>
 		<property name="useUnicode">true</property>

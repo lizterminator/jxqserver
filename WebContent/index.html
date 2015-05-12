@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="Keywords" content="Driving Circle,驾校圈，驾校,驾校选择,驾校团购,学车,驾照考试信息,自助预约考试入口"/>
+	<meta name="Description" content="驾校圈是西安电子科技大学的学生团队专门为学生打造的专业驾校信息平台，为客户提供方便、快捷且详细的驾校信息"/>
+	
 	<title>驾校圈 | 首页</title>
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/jiaxiao.css">
 	<script src="js/jiaxiao.js"></script>
+	<script src="js/favorite.js"></script>
 	<script>
 var _hmt = _hmt || [];
 (function() {
@@ -26,8 +30,9 @@ var _hmt = _hmt || [];
 		<div class="topBar">
 			<div class="comWidth row">
 				<div class="col-md-6 col-sm-6 " id="headerLeft">
-					<a href="#" class="collection">收藏驾校圈</a>
+					<a href="#" onclick="AddFavorite(window.location,document.title)" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
+					<a href="index.html">[首页]</a>
 					<span id="moveAble">
 						<a href="login.html">[登录]</a>
 						<a href="register.html">[个人免费注册]</a>
@@ -36,8 +41,8 @@ var _hmt = _hmt || [];
 					
 				</div>
 				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
-					<a href="orderList.html">[我的订单]</a>
-					<a href="#kefu">[联系客服]</a>
+					<a href="#" id="myorders">[我的订单]</a>
+					<a href="about.html#zxns" target="_blank">[招贤纳士]</a>
 				</div>
 			</div>
 		</div>
@@ -66,18 +71,64 @@ var _hmt = _hmt || [];
 	
 	<div class="container">
 		<div class="row">
-            <div class="col-md-7 col-sm-7 col-xs-7">
-                <div id="tupian" style="width:100%;height:250px;border:0px red solid;">
-					<a href="JavaScript:xzurl()" ><img style="border:0px #0d346b dashed;width:100%;height:100%;" name="jiaxiaojihe" src="images/xl.png" alt="翔龙驾校欢迎你！"></a>
-					<div style="position:relative;top:-25px;left:85%;">
-					<a href="JavaScript:xl()" ><img name="xlyd" src="images/xlyd.png" /></a>
-					<a href="JavaScript:px()"><img name="pxyd" src="images/pxyd.png" /></a>
-					<a href="JavaScript:xx()"><img name="xxyd" src="images/xxyd.png" /></a>
-					</div>
-				</div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+				  </ol>
 
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      <img src="images/rolling/rolling_0001.png" alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="images/rolling/rolling_0002.png"  alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="images/rolling/rolling_0003.png" alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="images/rolling/rolling_0004.png"  alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="images/rolling/rolling_0005.png" alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				  </div>
+
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+	
+            </div><!--col-6 -->
+            <div class="col-md-5 col-sm-5 col-xs-12">
                <div id="chanel" style="width:100%;height:250px;border:0px red solid;">
 					<div style="width:100%;height:40px;background-color:#0d346b;">
 						<ul>
@@ -89,22 +140,25 @@ var _hmt = _hmt || [];
 
 					<div id="newstag" style="width:100%;height:210px;background-color:#f3f6f9;">
 						<ul>
-							<li><a href="#">2015最新交规</a></li>
+							<li><a target="_blank" href="http://117.36.53.122:9088/jsrwsyy/wsyy.do?actiontype=init">驾驶人科目考试网上自助预约系统入口</a></li>
 
-							<li><a href="#">交通部门最近考试安排</a></li>
+							<li><a target="_blank" href="http://www.xianjj.com/jjcontent.jsp?urltype=news.NewsContentUrl&wbtreeid=10994&wbnewsid=16072">高速交警坚守岗位 确保施工路段通行秩序</a></li>
 
-							<li><a href="#">道路交通处罚条例</a></li>
+							<li><a target="_blank" href="http://www.xianjj.com/jjcontent.jsp?urltype=news.NewsContentUrl&wbtreeid=10977&wbnewsid=16068">交警莲湖大队组织五四青年节活动</a></li>
 
-							<li><a href="#">车辆安全检查通知</a></li>
+							<li><a target="_blank" href="http://www.xianjj.com/jjcontent.jsp?urltype=news.NewsContentUrl&wbtreeid=10977&wbnewsid=16026">高速交警热心帮助群众获感谢</a></li>
+							
+							<li><a target="_blank" href="http://www.xianjj.com/jjcontent.jsp?urltype=news.NewsContentUrl&wbtreeid=10983&wbnewsid=12231">姑娘！危险</a></li>
 
 						</ul>
 					</div>
 					<div id="zhinan"  style="width:100%;height:210px;background-color:#f3f6f9;">
 						<ul>
-							<li><a href="#">新手指南1</a></li>
-							<li><a href="#">新手指南2</a></li>
-							<li><a href="#">吐血整理易错集锦</a></li>
-							<li><a href="#">学车指南大全</a></li>
+							<li><a href="guide_001.html" target="_blank">驾考科目一技巧</a></li>
+							<li><a href="guide_002.html" target="_blank">驾照科目三考试技巧</a></li>
+							<li><a href="guide_003.html" target="_blank">直角转弯技巧</a></li>
+							<li><a href="guide_004.html" target="_blank">半坡起步、停车</a></li>
+							<li><a href="guide_005.html" target="_blank">百米增减挡最新破解</a></li>
 						</ul>
 					</div>
 					
@@ -172,8 +226,17 @@ var _hmt = _hmt || [];
             </div>
         </div>-->
         <!-- /.row -->
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-md-12" style="text-align:center">
+        				<span class="laixi">
+        				请注意：前方有一大波驾校来袭！
+        				</span>
+        			</div>
+        		</div>
+        	</div>
    <div class="footer">
-		<p><a href="#">驾校圈简介</a><i>|</i><a href="#">驾校圈公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i></p>
+<p><a href="about.html#aboutjxq" target="_blank">驾校圈简介</a><i>|</i><a href="about.html#jxqgg" target="_blank">驾校圈公告</a><i>|</i> <a href="about.html#zxns" target="_blank">招纳贤士</a><i>|</i><a href="about.html#contactUs" target="_blank">联系我们</a><i>|</i></p>
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>
@@ -183,10 +246,10 @@ var _hmt = _hmt || [];
 	
 	
 	<script>
-	
+		
 		User.search();
 		$('.carousel').carousel({
-	        interval: 5000 //changes the speed
+	        interval: 3000 //changes the speed
 	    })
 	</script>
 </body>

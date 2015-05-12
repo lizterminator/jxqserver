@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<!-- <link rel="stylesheet" href="thirdparty/DataTables-1.10.5/media/css/jquery.dataTables.min.css"> -->
-	
+	<script src="js/favorite.js"></script>
 	<script>
 var _hmt = _hmt || [];
 (function() {
@@ -28,8 +28,9 @@ var _hmt = _hmt || [];
 		<div class="topBar">
 			<div class="comWidth row">
 				<div class="col-md-6 col-sm-6 " id="headerLeft">
-					<a href="#" class="collection">收藏驾校圈</a>
+					<a href="#" onclick="AddFavorite(window.location,document.title)" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
+					<a href="index.html">[首页]</a>
 					<span id="moveAble">
 						<a href="login.html">[登录]</a>
 						<a href="register.html">[个人免费注册]</a>
@@ -37,8 +38,8 @@ var _hmt = _hmt || [];
 					
 				</div>
 				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
-					<a href="orderList.html">[我的订单]</a>
-					<a href="#kefu">[联系客服]</a>
+					<!-- <a href="orderList.html">[我的订单]</a> -->
+					<a href="about.html#zxns" target="_blank">[招贤纳士]</a>
 				</div>
 			</div>
 		</div>
@@ -86,8 +87,8 @@ var _hmt = _hmt || [];
 								<th>联系人姓名</th>
 								<th>联系电话</th>
 								<th>预约时间</th>
-								<th>本地人数</th>
-								<th>异地人数</th>
+								<th>本地/异地</th>
+								
 								<th>是否完成预约</th>
 							</tr>
 						</thead>
@@ -97,8 +98,8 @@ var _hmt = _hmt || [];
 								<th>联系人姓名</th>
 								<th>联系电话</th>
 								<th>预约时间</th>
-								<th>本地人数</th>
-								<th>异地人数</th>
+								<th>本地/异地</th>
+								
 								<th>是否完成预约</th>
 							</tr>
 						</tfoot>
@@ -149,7 +150,7 @@ var _hmt = _hmt || [];
 	</div>
 
  <div class="footer">
-		<p><a href="#">驾校圈简介</a><i>|</i><a href="#">驾校圈公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i></p>
+<p><a href="about.html#aboutjxq" target="_blank">驾校圈简介</a><i>|</i><a href="about.html#jxqgg" target="_blank">驾校圈公告</a><i>|</i> <a href="about.html#zxns" target="_blank">招纳贤士</a><i>|</i><a href="about.html#contactUs" target="_blank">联系我们</a><i>|</i></p>
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>
@@ -180,10 +181,10 @@ var _hmt = _hmt || [];
 					{ "data": "phone" },
 					{ "data": "order_time" },
 					{ "data": "local" },
-					{ "data": "notLocal" },
 					{ "data": "checked" }
 				],
 				 "createdRow": function( row, data, dataIndex ) {
+					 
 				    if ( data.checked == '是' ) {
 				      $(row).addClass( 'success' );
 				    } else{
@@ -192,7 +193,17 @@ var _hmt = _hmt || [];
 				  },
 				 "order": [[ 2, "desc" ]]
 			} );
-
+			
+			 $('#example tbody').on( 'click', 'tr', function () {
+				 
+				 	/* $(this).toggle('selected'); */
+					 var name =$(this)[0].cells[0].innerHTML;
+					 var phone = $(this)[0].cells[1].innerHTML;
+					 $('#name').val(name);
+					 $('#phone').val(phone);
+			    } );
+			 
+			
 			$('#check').click(function(){
 				$(this).prop("disabled",true);
 				

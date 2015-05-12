@@ -33,7 +33,7 @@ function next()
 			document.xxyd.style.opacity = 1;
 	}
 }
-window.onload = setInterval(next,3000);	
+/*window.onload = setInterval(next,3000);	*/
 
 function xl()
 {

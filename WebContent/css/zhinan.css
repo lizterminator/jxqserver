@@ -1,0 +1,49 @@
+.divname{
+	border:3px solid #0d346b;
+	color:#0d346b;
+	font-size:28px;
+	
+}
+ol {
+	font-size:20px;
+	margin-top:20px;
+	padding:30px;
+	border-left:15px #0d346b solid;
+	background-color:#f3f6f9;
+	box-shadow:2px 2px 2px silver;
+	
+}
+ol li {
+	
+	margin-bottom:10px;
+	border-bottom:2px #fcfcfc solid;
+}
+
+h4 {
+	margin-bottom:20px;
+}
+h1 {
+	text-align:center;
+	font-weight:bold;
+}
+body {
+	font-family:microsoft yahei;
+}
+ol h2 {
+	margin-top:20px;
+	margin-bottom:10px;
+}
+#aboutjxq  {
+	margin-top:30px;
+}
+#aboutjxq p {
+	font-size:16px;
+	text-indent:2em;
+	line-height:1.5em;
+}
+#aboutjxq  h3 {
+	text-align:center;
+}
+#aboutjxq  h4 {
+	font-weight:bold;
+}

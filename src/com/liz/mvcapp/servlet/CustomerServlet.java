@@ -305,9 +305,54 @@ public class CustomerServlet extends HttpServlet {
         		//array.put(orders);
         		
         		json.put("success", true).put("orders", orders);
+//        		json.put("success", true);
+        		
         		out.print(json);
         		out.flush();  
                 out.close();  
+        	}else{
+        		json.put("success", false);
+        		out.print(json);
+        		out.flush();  
+                out.close(); 
+        	}
+        }else{
+        	json.put("success", false);
+    		out.print(json);
+    		out.flush();  
+            out.close(); 
+        }
+	}
+	
+	private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String phone = request.getParameter("phone");
+		String password = request.getParameter("password");
+		String orderNumber = request.getParameter("orderNumber");
+		
+		if(!Validate.checkPhone(phone)){
+			return;
+		}
+		
+		long count = customerDAO.getCountWithPhone(phone);
+		
+		PrintWriter out = response.getWriter();  
+		JSONObject json = new JSONObject();
+        if(count > 0 ){
+//        	HttpSession session = request.getSession();
+        	Customer customer = customerDAO.get(phone);
+        	
+        	if(customerDAO.getPassword(phone).equals(password)){
+        		if(orderDAO.delete(orderNumber)){
+        			json.put("success", true).put("msg", "删除成功");
+            		out.print(json);
+            		
+        		}else{
+        			json.put("success", false).put("msg", "删除失败");
+            		out.print(json);
+        		}
+        		out.flush();  
+                out.close();  
+        		
         	}else{
         		json.put("success", false);
         		out.print(json);

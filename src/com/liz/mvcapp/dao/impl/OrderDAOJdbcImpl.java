@@ -52,4 +52,10 @@ public class OrderDAOJdbcImpl extends DAO<Order> implements OrderDao{
 		return getForList(sql,userId);
 	
 	}
+
+	@Override
+	public Boolean delete(String orderId) {
+		String sql = "DELETE FROM orders WHERE orderNumber = ?";
+		return update(sql, orderId);
+	}
 }

@@ -201,7 +201,7 @@ footer {
 #newstagdh  a:link
 {
 	
-	padding:10px 10px 12px 10px;
+	padding:10px 10px 10px 10px;
 	background-color:#0d346b;
 	color:#FCFCFC;
 	text-decoration:none;
@@ -230,7 +230,8 @@ footer {
 	background-color:#0d346b;
 	color:#FCFCFC;
 	text-decoration:none;
-	font-weight:Microsoft YaHei, sans-serif;
+	font-weight:900px;
+	font-family:Microsoft YaHei, sans-serif;
 	font-size:18px;
 }
 
@@ -451,4 +452,29 @@ td:first-child {
 	padding:0px;
 	background-color:#0d346b;
 	color:white;
+}
+
+.local ,.waidi,.localmoney,.waidimoney {
+	font-family:microsoft Yahei;
+	font-size:18px;
+	margin-right:10px;
+}
+.tgheight {
+	height:300px;
+	/* border:1px red solid; */
+}
+.introstyle {
+	height:74px !important;
+	overflow:hidden;
+	padding:0;
+	margin-top:10px;
+	margin-bottom:15px;
+}
+.serve_school {
+	font-family:microsoft Yahei;
+	font-size:18px;
+}
+.tgcontent {
+	height:250px !important;
+	border:0px blue solid;
 }

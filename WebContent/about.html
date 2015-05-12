@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<meta name="Keywords" content="Driving Circle,驾校圈，驾校,驾校选择,驾校团购,学车,驾照考试信息,自助预约考试入口"/>
+		<meta name="Description" content="驾校圈是西安电子科技大学的学生团队专门为学生打造的专业驾校信息平台，为客户提供方便、快捷且详细的驾校信息"/>
+		
+		<title>驾校圈 | 关于驾校圈</title>
+		<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/jiaxiao.css">
+		<link rel="stylesheet" href="css/zhinan.css">
+		
+		
+	</head>
+<body>
+
+<div class="headerBar container">
+		<div class="topBar">
+			<div class="comWidth row">
+				<div class="col-md-6 col-sm-6 " id="headerLeft">
+					<a href="#" onclick="AddFavorite(window.location,document.title)" class="collection">收藏驾校圈</a>
+					&nbsp|&nbsp&nbsp
+					<span id="moveAble">
+						<a href="login.html">[登录]</a>
+						<a href="register.html">[个人免费注册]</a>
+					</span>
+					
+					
+				</div>
+				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
+					<a href="#" id="myorders">[我的订单]</a>
+					<a href="#zxns">[招贤纳士]</a>
+				</div>
+			</div>
+		</div>
+	</div>
+      
+    <div class="container"  >
+			<div class="row logoBar" >
+            	
+            	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5" >
+            		<a href="index.html"><img src="images/logoW.png" alt="驾校圈"></a> 
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-7" >
+            		<div class="input-group search_box">
+                        <input type="text" class="form-control" placeholder="驾校团购信息或学校" id="keyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search_btn" type="button"><span class="text-success">搜索</span></button>
+                        </span>
+                    </div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4"></div>
+            		
+        	</div>
+    </div> 
+	<div class="container">
+	<div class="col-md-9" id="aboutjxq">
+	<h2>驾校圈简介</h2>
+	<br>
+		<p>驾校圈是西安电子科技大学笨鸟创业团队（西安圈体智能信息科技有限公司）为在校大学生打造的集驾校信息预览、免费预约驾校的线上平台，同时该平台免费为驾校提供信息宣传及驾校学员管理服务。网站主要包括两个方面的内容：1、驾校信息的发布、学员管理以及辅助培训；2、学员浏览驾校信息、预约驾校；网站致力于打造专业的服务于驾校和学员的信息服务平台，从免费的为驾校提供信息宣传，打造专业个性的门户网站，简单明了的学员管理系统到提供学员强大的信息查阅、实惠的驾校预约报名以及方便快捷的线下入学这一整套服务。</p><br>
+		<p>网站面向的群体主要有两部分：一部分是驾校，一部分是驾校的学员。这里，网站致力于服务的驾校主要为大学周边以大学生为主要客户的驾校，学员主要为在校大学生。主要的运作方式需要协同驾校和学员两方面的客户：首先，网站需与各驾校签订相应的合作意向，包括驾校可能提供的关于驾校的所有可公开的信息，我们根据学员的需求做适当的筛选，发布在相应驾校的专业宣传网页上面；第二步，学员访问网站，查询各个驾校的信息，根据自身的情况，选择合适的驾校。紧接着，学员可免费预约驾校入学服务，收到网站的预约码。最后驾校联系预约的学员，安排专车将学员接到驾校，学员查看驾校详情，满意的情况下验证预约码，在享受网站事先与驾校洽谈的优惠条件下缴费入学。
+		</p>
+	<hr>
+	<h2 id="jxqgg">驾校圈公告</h2>
+	<br><br>
+	<div style="text-align:center;">
+		<h4>详情请关注公众号: 驾校圈China</h4>
+		<img src="images/jxqweixin.jpg">
+	</div>
+	<hr>
+	<h2 id="zxns">招贤纳士</h2>
+	<div >
+	<h3>Join us!</h3>
+	<br>
+	<p>如果你也是热血沸腾的青年，喜欢充满激情的创业氛围，如果你对互联网充满热爱，乐于分享，善于分析解决问题，那么请加入我们！</p>
+	<br>
+	<h4>招聘职位</h4>
+	<table class="table table-striped">
+		<tr><td>职位</td><td>职位要求:</td></tr>
+		<tr><td>Android工程师</td><td>1.有Android项目开发经验；<br>
+		2.熟练掌握Java开发，对面向对象的开发设计有深入了解；<br>
+		3.熟练掌握Android网络应用软件开发和调试，熟悉网络的基本知识及TCP/IP协议；<br>
+		4.热爱移动互联网，对应用，技术创新有极大的热情；<br>
+		5.对智能手机软件交互设计及UI设计有实际开发经验者优先；</td></tr>
+		<tr><td>Web前端工程师</td><td>1.熟练掌握JavaScript，HTML5, CSS3等技术；<br>
+		2.有web前端开发经验，能独立设计撰写开发文档并实施开发者优先；<br>
+		3.能够熟练的与后台程序人员沟通，能够配合后台工作人员的开发工作；<br>
+		有跨浏览器，移动设备如平板电脑、手机等Web开发经验，熟悉Bootstrap前端框架者优先；</td></tr>
+		<tr><td>UI设计师</td><td>1.设计相关专业背景；<br>
+		2.有网页设计、软件界面设计经验，对交互设计有较深理解和大量实践（流程图、线框图等）；<br>
+		3.对用户体验有了解和认识，具备一定视觉设计和HTML5/CSS3等相关技能；<br>
+		4.能够熟练使用Photoshop、Flash、Illustrator、Axure等软件；<br>
+		5.热爱互联网，经常了解业界前瞻信息及应用，并有浓厚的兴趣和深入的见解;</td></tr>
+
+	</table>
+	<p>实习生或者正式员工均可，实习生保证实习时间至少2-3个月，我们提供舒适的办公场地，优厚的待遇，正式员工每个月有一定的配股。</p>
+<p>收到简历我们会尽快回复，简历请直接发送至：
+berylqliu@foxmail.com</p>
+	<hr>
+	<h2 id="contactUs">联系我们</h2>
+	<div style="text-align:center">
+		<img src="images/contact_noise.png" alt="联系我们">
+		<!-- <p>电话：18192392952</p>
+		<p>邮箱：zhoumingxing_mail@163.com</p> -->
+
+	</div>
+	</div>
+	<hr>
+	</div>
+	</div>
+	
+	<div class="footer">
+		<p><a href="#aboutjxq">驾校圈简介</a><i>|</i><a href="#jxqgg">驾校圈公告</a><i>|</i> <a href="#zxns">招纳贤士</a><i>|</i><a href="#contactUs">联系我们</a><i>|</i></p>
+	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
+</div>
+<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
+<script src="js/user.js"></script>
+	</body>
+</html>

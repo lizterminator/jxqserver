@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="Keywords" content="Driving Circle,驾校圈，驾校,驾校选择,驾校团购,学车,驾照考试信息,自助预约考试入口"/>
+	<meta name="Description" content="驾校圈是西安电子科技大学的学生团队专门为学生打造的专业驾校信息平台，为客户提供方便、快捷且详细的驾校信息"/>
+	
 	<title>驾校圈 | 首页</title>
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
+	<script src="js/favorite.js"></script>
 	<script>
 var _hmt = _hmt || [];
 (function() {
@@ -22,8 +26,9 @@ var _hmt = _hmt || [];
 		<div class="topBar">
 			<div class="comWidth row">
 				<div class="col-md-6 col-sm-6 " id="headerLeft">
-					<a href="#" class="collection">收藏驾校圈</a>
+					<a href="#" onclick="AddFavorite(window.location,document.title)" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
+					<a href="index.html">[首页]</a>
 					<span id="moveAble">
 						<a href="login.html">[登录]</a>
 						<a href="register.html">[个人免费注册]</a>
@@ -31,8 +36,8 @@ var _hmt = _hmt || [];
 					
 				</div>
 				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
-					<a href="orderList.html">[我的订单]</a>
-					<a href="#kefu">[联系客服]</a>
+					<a href="#" id="myorders">[我的订单]</a>
+					<a href="about.html#zxns" target="_blank">[招贤纳士]</a>
 				</div>
 			</div>
 		</div>
@@ -76,13 +81,13 @@ var _hmt = _hmt || [];
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">联系人姓名</label>
+                        <label for="name" class="col-sm-2 control-label">预约人姓名</label>
                         <div class="col-lg-3">
                           <input type="text" class="form-control" name="contact" pattern="^([\u4E00-\uFA29]|[\uE7C7-\uE7F3])*$" id="contact" placeholder="填写联系人姓名" required>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="phone" class="col-sm-2 control-label" >联系人手机号码</label>
+                        <label for="phone" class="col-sm-2 control-label" >预约人手机号码</label>
                         <div class="col-lg-3">
                           <input type="text" class="form-control" name="contactPhone" pattern="^1[3|4|5|8][0-9]\d{4,8}$" id="contactPhone" placeholder="填写联系人手机号码" required>
                         </div>
@@ -124,6 +129,22 @@ var _hmt = _hmt || [];
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="local" class="col-sm-2 control-label">本地</label>
+                            <div class="col-lg-3">
+                              <!-- <input type="number" max="20" min="0" name="local" class="form-control" value="0" form="payForm" id="local" placeholder="填写本地报名人数"> -->
+                              	<input type="radio" name="local" value="local">
+                              	
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="local" class="col-sm-2 control-label">异地</label>
+                            <div class="col-lg-3">
+                              <!-- <input type="number" max="20" min="0" name="local" class="form-control" value="0" form="payForm" id="local" placeholder="填写本地报名人数"> -->
+                              	<input type="radio" name="local" value="notlocal">
+                              	
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="local" class="col-sm-2 control-label">本地报名人数</label>
                             <div class="col-lg-3">
                               <input type="number" max="20" min="0" name="local" class="form-control" value="0" form="payForm" id="local" placeholder="填写本地报名人数">
@@ -134,7 +155,7 @@ var _hmt = _hmt || [];
                             <div class="col-lg-3">
                               <input type="number" max="20" min="0" name="notLocal" class="form-control" value="0" form="payForm" id="not_local" placeholder="填写异地报名人数">
                             </div>
-                        </div>
+                        </div> -->
 
 					</div>
                   </div>
@@ -167,7 +188,7 @@ var _hmt = _hmt || [];
     
 
  <div class="footer">
-		<p><a href="#">驾校圈简介</a><i>|</i><a href="#">驾校圈公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i></p>
+<p><a href="about.html#aboutjxq" target="_blank">驾校圈简介</a><i>|</i><a href="about.html#jxqgg" target="_blank">驾校圈公告</a><i>|</i> <a href="about.html#zxns" target="_blank">招纳贤士</a><i>|</i><a href="about.html#contactUs" target="_blank">联系我们</a><i>|</i></p>
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>

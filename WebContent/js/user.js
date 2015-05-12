@@ -1,4 +1,22 @@
+$('#keyword').on('keyup', function(e) {
+    if (e.which == 13) {
+    	User.search();
+        e.preventDefault();
+    }
+});
 
+$('#myorders').click(function(e){
+	
+	e.preventDefault();
+	var user = JSON.parse(sessionStorage.getItem("user"));
+	if(user){
+		location.href="orderList.html";
+	}else{
+		//alert("请先登陆！");
+		location.href="login.html";
+	}
+	
+});
 $(function(){
 	
 	var user = JSON.parse(sessionStorage.getItem("user"));
@@ -9,7 +27,7 @@ $(function(){
 		p.empty();
 		var sname = user.name||user.phone;
 		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>");
-		p.append("<a href='index.html' id='logout'>[登出]</a>");
+		p.append("<a href='index.html' id='logout'>[退出]</a>");
 	}else{
 	}
 	
@@ -23,7 +41,7 @@ $(function(){
 		var sname = jx.name||jx.mobile;
 		p.append("<a href='personal.html'>[欢迎你 "+ sname + "]</a>&nbsp&nbsp");
 		p.append("<a href='studentManagement.html'>[学员管理]</a>&nbsp&nbsp");
-		p.append("<a href='index.html' id='logout'>[登出]</a>");
+		p.append("<a href='index.html' id='logout'>[退出]</a>");
 	}else{
 	}
 	
@@ -376,35 +394,43 @@ var User = (function () {
 				function itemTemplate(config){
 					return "<div class='row'>" +
 								"<div class='col-md-7'>" +
-									"<a href='portfolio-item.html'>" +
+									"<a href='#' class='jximg' id='jximg_"+config.id+"' target='_blank'>" +
 										"<img class='img-responsive img-hover' src='"+config.pic1+"' alt=''>" +
 									"</a>" +
 								"</div>" +
-								"<div class='col-md-5 shortcuts'>" +
-									"<h3>"+config.name +"<small>减免<span class='text-danger' style='font-size:23px'>" +
+								"<div class='col-md-5 shortcuts tgheight'><div class='tgcontent'>" +
+									"<h3><a href='#' class='jxa' id='jxa_"+config.id+"'>"+config.name +"</a><small>减免<span class='text-danger' style='font-size:23px'>" +
 									config.discount+"</span>元/人  多报多免哦</small></h3>" +
-	//								"<span>免费！</span>"+
-	//								"<img src='images/rmb_21.png'/>" +
-	//								"<span class='originPrice'>￥" +config.price+
-									//"<span class='originPrice'> 减免 "+"<span class='text-primary'>" +config.discount+"</span>元/人  多报多免哦"+
-									"</span><hr/>" +
 									
-									"<p>" + config.info+
-									"</p>" +
+									"</span><hr/>" +
+									"<div class='introstyle'>"+
+									"<h4>" + config.info+
+									"</h4></div>" +
+									"<span class='local'>【本地户口】</span><span class='localmoney'>"+config.bendi_price+"</span><span class='waidi'>【外地户口】</span><span class='waidimoney'>"+config.waidi_price+"</span><br>"+
+									"<span class='serve_school'>【服务学校】</span>"+
+									"<div id='xuexiaoqu'>"+
+										"<a href='#''>西安电子科技大学</a>"+
+									"</div></div>"+
+										
 									"<button id='jx_"+ config.id+"' class='jy_btn'>免费预约</button>" +
 									"<span class='orderDetial'><span class='countOfBuyers'>"+config.sold+"</span>人已成交</span>" +
 								"</div>" +
 							"</div>" +
-						"<hr><br>";
+						"<hr style='height:5px;border:none;border-top:5px ridge green;'><br><br><br>";
 				}
 				$("#main").empty();
 				for(var i=0;i<data.schools.length;i++){
 					$("#main").append(itemTemplate(data.schools[i]));
 				}
 				
-				$('.jy_btn').click(function(){
+				$('.jy_btn,.jxa').click(function(){
 					storage.setItem("school",this.id.split('_')[1]);
 					location.href="item-detail.html";
+				});
+				$('.jximg').click(function(e){
+					e.preventDefault();
+					storage.setItem("school",this.id.split('_')[1]);
+					location.href="jxIndex.html";
 				});
 				
 			}

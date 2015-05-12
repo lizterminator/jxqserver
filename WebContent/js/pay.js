@@ -23,8 +23,9 @@
 		var contact = $('#contact').val().trim();
 		var contactPhone = $('#contactPhone').val().trim();
 		
-		var local = $('#local').val().trim();
-		var not_local = $('#not_local').val().trim();
+		var local = $('input:radio[name=local]:checked').val();
+		//var not_local = $('#not_local').val().trim();
+		console.log(local);
 		
 		if(!namePattern.test(contact)){
 			alert('请填写正确的姓名！');
@@ -34,13 +35,16 @@
 			alert('请填写正确的手机号码');
 			return;
 		}
-		if(!numPattern.test(local) || !numPattern.test(not_local)){
+		/*if(!numPattern.test(local) || !numPattern.test(not_local)){
 			
 			alert('请填写正确的预约人数');
-		}
+		}*/
 		
-		if(local==0&&not_local==0 || local>100 || not_local>100){
+		/*if(local==0&&not_local==0 || local>100 || not_local>100){
 			alert('请正确填写预约人数！');
+		}*/
+		if(!local){
+			alert("请选择本地或者异地!");
 		}else{
 			$(this).attr('disabled',"true");
 			$.ajax({
@@ -53,7 +57,7 @@
 					schoolId: school.id,
 					schoolName: school.name,
 					local: local,
-					notLocal: not_local,
+					//notLocal: not_local,
 					userPhone: user.phone,
 					password: user.password
 				},
@@ -69,7 +73,7 @@
 		if(data.success){
 			alert(data.msg);
 			storage.setItem('orderNumber',data.orderNumber);
-			storage.setItem('school'+school_id,'');
+			//storage.setItem('school'+school_id,'');
 			location.href = "orderList.html";
 		}else{
 			alert(data.msg);

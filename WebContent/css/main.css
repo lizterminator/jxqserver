@@ -19,14 +19,17 @@
 	padding-left: 0px;
 	padding-right: 0px;
 }
-
+.laixi{
+	font-family: Microsoft YaHei, sans-serif;
+	font-size: 20px;
+}
 /*topBar*/
 .topBar{height:31px; background-color:#F7F7F7; line-height:31px;}
 .collection{background:url(../images/icon/collection.jpg) left center no-repeat; padding-left:19px; font-weight:bold;}
 .topBar a:hover{color:red;}
 
 /*logo---------------------------------------------------鎴戜慨鏀逛簡*/
-.logoBar{ background-color:#1D7AD9;}
+.logoBar{ background-color:#0d346b;}
 .logo{padding-left:41px; padding-top:0px;}
 /*search*/
 .search_box{/* width:525px; */ padding-top:40px; padding-left:20px;}

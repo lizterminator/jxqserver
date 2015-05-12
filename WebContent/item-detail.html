@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="Keywords" content="Driving Circle,驾校圈，驾校,驾校选择,驾校团购,学车,驾照考试信息,自助预约考试入口"/>
+	<meta name="Description" content="驾校圈是西安电子科技大学的学生团队专门为学生打造的专业驾校信息平台，为客户提供方便、快捷且详细的驾校信息"/>
+	
 	<title>驾校圈 | 驾校详情</title>
 	<link rel="stylesheet" href="thirdparty/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/main.css">
+	<script src="js/favorite.js"></script>
 	<script>
 var _hmt = _hmt || [];
 (function() {
@@ -22,8 +26,9 @@ var _hmt = _hmt || [];
 		<div class="topBar">
 			<div class="comWidth row">
 				<div class="col-md-6 col-sm-6 " id="headerLeft">
-					<a href="#" class="collection">收藏驾校圈</a>
+					<a href="#" onclick="AddFavorite(window.location,document.title)" class="collection">收藏驾校圈</a>
 					&nbsp|&nbsp&nbsp
+					<a href="index.html">[首页]</a>
 					<span id="moveAble">
 						<a href="login.html">[登录]</a>
 						<a href="register.html">[个人免费注册]</a>
@@ -31,8 +36,8 @@ var _hmt = _hmt || [];
 					
 				</div>
 				<div class="leftArea col-md-6 col-sm-6 " style="text-align:right;" id="headerRight">
-					<a href="orderList.html">[我的订单]</a>
-					<a href="#kefu">[联系客服]</a>
+					<a href="#" id="myorders">[我的订单]</a>
+					<a href="about.html#zxns" target="_blank">[招贤纳士]</a>
 				</div>
 			</div>
 		</div>
@@ -173,10 +178,10 @@ var _hmt = _hmt || [];
 			<div class="col-lg-12 ">
 				<ul class="op_bar" >
 					<li ><a href="#jx_position">驾校位置</a></li>
-	            	<li><a href="#knowBeforeBuy">购买须知</a></li>
+	            	<li><a href="#knowBeforeBuy">预约须知</a></li>
 	                
 	                <li><a href="#jx_promise">驾校承诺</a></li>
-	                <li><a href="#learnProcess">学车流程</a></li>
+	                <!-- <li><a href="#learnProcess">学车流程</a></li> -->
 	                
 	            </ul>
 			</div>
@@ -197,17 +202,26 @@ var _hmt = _hmt || [];
 		<!--                         购买须知                     -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h2 class="page-header" id="knowBeforeBuy">购买须知</h2>
+				<h2 class="page-header" id="knowBeforeBuy">预约须知</h2>
 			</div>
 			<hr>
 			<div class="col-lg-12">
 				
             	<table class="customtable">
-                	<tr><td>有效期</td><td>2016/05/05</td></tr>
-                    <tr><td>预约提醒</td><td>无需预约，消费高峰时可能需要等位s</td></tr>
-                    <tr><td>温馨提示</td><td>温馨提示：北京芳草地店，2014年6月13号正式开业；北京新光天地点，2014年6月15号正式开业
-团购用户不可同时享受商家其他优惠
-酒水饮料等问题，请致电商家咨询，以商家反馈为准</td></tr>
+                	<tr><td>使用时间</td><td>09:00-21:00</td></tr>
+                    <tr><td>预约提醒</td><td>无需预约，消费高峰时可能需要等位</td></tr>
+                    <tr><td>温馨提示</td><td>每人最多购买500张
+每张限1人使用，不论是否儿童均计入人数
+练车方式：一对多，具体为：一个教练车，四个学员
+学时不限，学会为止
+不包含补考费，补考费用需自理
+提供免费班车接送
+仅限以下户口体验：西安本地
+验证后，安排教练，与教练协商练车时间
+仅限18岁（含）以上至69岁（含）以下体验
+停车位收费标准：详情咨询商家
+提供免费WiFi
+团购用户不可同时享受商家其他优惠</td></tr>
                     <tr><td>限购限用提醒</td><td>可叠加使用
 不兑现、不找零</td></tr>
                     <tr><td>使用时间</td><td>有效期内</td></tr>
@@ -226,22 +240,16 @@ var _hmt = _hmt || [];
 			<hr>
 			<div class="col-lg-12">
 				<table class="customtable">
-                	<tr><td>有效期</td><td>2016/05/05</td></tr>
-                    <tr><td>预约提醒</td><td>无需预约，消费高峰时可能需要等位s</td></tr>
-                    <tr><td>温馨提示</td><td>温馨提示：北京芳草地店，2014年6月13号正式开业；北京新光天地点，2014年6月15号正式开业
-团购用户不可同时享受商家其他优惠
-酒水饮料等问题，请致电商家咨询，以商家反馈为准</td></tr>
-                    <tr><td>限购限用提醒</td><td>可叠加使用
-不兑现、不找零</td></tr>
-                    <tr><td>使用时间</td><td>有效期内</td></tr>
-                    <tr><td>商家服务</td><td>更快速预约</td></tr>
+                	<tr><td>预约减免</td><td>享受预约减免报名费</td></tr>
+                    <tr><td>费用</td><td>享受折扣的同时承诺绝不收取额外费用</td></tr>
+                    
                 </table>
 			</div>
 		</div>
 
 
 		<!--                         学车流程                     -->
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-12">
 				<h2 class="page-header" id="learnProcess">学车流程</h2>
 			</div>
@@ -259,21 +267,15 @@ var _hmt = _hmt || [];
                     <tr><td>商家服务</td><td>更快速预约</td></tr>
                 </table>
 			</div>
-		</div>
-
-	
-
+		</div> -->
 
      </div>
 
     <hr>
 
-        
-
-      
-
+	
      <div class="footer">
-		<p><a href="#">驾校圈简介</a><i>|</i><a href="#">驾校圈公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i></p>
+<p><a href="about.html#aboutjxq" target="_blank">驾校圈简介</a><i>|</i><a href="about.html#jxqgg" target="_blank">驾校圈公告</a><i>|</i> <a href="about.html#zxns" target="_blank">招纳贤士</a><i>|</i><a href="about.html#contactUs" target="_blank">联系我们</a><i>|</i></p>
 	<p>Copyright &copy; 2014 - 2015 驾校圈版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<!-- <p class="web"><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a><a href="#"><img src="images/webLogo.jpg" alt="logo"></a></p> -->
 </div>
@@ -281,7 +283,7 @@ var _hmt = _hmt || [];
 	<script src="thirdparty/jquery/jquery-1.11.0.js"></script>
 	<script src="thirdparty/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 	<script src="js/user.js"></script>
-	<script src="js/detail.js">
+	<script src="js/detail.js"></script>
 	<script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed

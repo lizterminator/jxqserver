@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import sun.security.action.PutAllAction;
+
 import com.liz.mvcapp.dao.CriteriaDrivingSchool;
 import com.liz.mvcapp.dao.CustomerDAO;
 import com.liz.mvcapp.dao.DrivingSchoolDAO;
@@ -100,7 +102,7 @@ public class DrivingSchoolServlet extends HttpServlet {
 		String contact = request.getParameter("contact");
 		String contactPhone = request.getParameter("contactPhone");
 		String localString = request.getParameter("local");
-		String notLocalString = request.getParameter("notLocal");
+		//String notLocalString = request.getParameter("notLocal");
 		String userPhone = request.getParameter("userPhone");
 		String password = request.getParameter("password");
 		String schoolName = request.getParameter("schoolName");
@@ -114,7 +116,13 @@ public class DrivingSchoolServlet extends HttpServlet {
 		
 		Integer jxId = 0;
 		Integer local = 0;
-		Integer notLocal = 0;
+		
+		if(localString.equals("local")){
+			local = 1;
+		}else if(localString.equals("notlocal")){
+			local = 0;
+		}
+		//Integer notLocal = 0;
 		try {
 			jxId = Integer.parseInt(idString);
 		} catch (Exception e) {
@@ -123,22 +131,8 @@ public class DrivingSchoolServlet extends HttpServlet {
 			return;
 			// TODO: handle exception
 		}
-		try {
-			local = Integer.parseInt(localString);
-		} catch (Exception e) {
-			System.out.println("解析出错！");
-			e.printStackTrace();
-			return;
-			// TODO: handle exception
-		}
-		try {
-			notLocal = Integer.parseInt(notLocalString);
-		} catch (Exception e) {
-			System.out.println("解析出错！");
-			e.printStackTrace();
-			return;
-			// TODO: handle exception
-		}
+		
+		
 		
 		long count = customerDAO.getCountWithPhone(userPhone);
 		
@@ -155,7 +149,7 @@ public class DrivingSchoolServlet extends HttpServlet {
         		order.setContactPhone(contactPhone);
         		order.setJxId(jxId);
         		order.setLocal(local);
-        		order.setNotLocal(notLocal);
+        		//order.setNotLocal(notLocal);
         		order.setSchoolName(schoolName);
         		Date date = new Date();
         		
@@ -169,7 +163,7 @@ public class DrivingSchoolServlet extends HttpServlet {
         	    System.out.println("Current Date: " + ft.format(date));  
         		
         		if(orderDAO.save(order)){
-        			drivingSchoolDAO.addSold(jxId,local+notLocal);
+        			drivingSchoolDAO.addSold(jxId,1);
         			json.put("success", true);
                 	json.put("msg", "下单成功");
                 	json.put("orderNumber",orderNumber);
@@ -202,7 +196,11 @@ public class DrivingSchoolServlet extends HttpServlet {
 			JSONObject json = new JSONObject();
 			json.put("name",ds.getName()).put("sold", ds.getSold()).put("life",ds.getLife())
 			.put("pic2", ds.getPic2()).put("pic3", ds.getPic3()).put("pic4", ds.getPic4())
-			.put("location", ds.getLocation()).put("id", ds.getId());
+			.put("location", ds.getLocation()).put("id", ds.getId())
+			.put("jianjie", ds.getJianjie()).put("shizililiang", ds.getShizililiang())
+			.put("fuwuxuexiao",ds.getFuwuxuexiao())
+			.put("jianjie_pic", ds.getJianjie_pic()).put("shizililiang_pic", ds.getShizililiang_pic())
+			.put("fuwuxuexiao_pic",ds.getFuwuxuexiao_pic());
 	        json.put("success", true);
 	        out.print(json);
 		} catch (Exception e) {
@@ -267,8 +265,9 @@ public class DrivingSchoolServlet extends HttpServlet {
 					json.put("phone", order.getContactPhone());
 					System.out.println(order.getOrderDate());
 					json.put("order_time", order.getOrderDate());
-					json.put("local", order.getLocal());
-					json.put("notLocal", order.getNotLocal());
+					String lo = order.getLocal()==1?"本地":"异地";
+					json.put("local", lo);
+					//json.put("notLocal", order.getNotLocal());
 					String checked = (order.getChecked()==1)?"是":"否";
 					json.put("checked", checked);
 					array.put(json);

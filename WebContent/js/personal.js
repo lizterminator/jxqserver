@@ -15,6 +15,12 @@
 	}
 	
 	$('#savePersonalInfo').click(function(){
+		
+		if(!user){
+			alert("请先登陆哦！");
+			location.href = "login.html";
+			return;
+		}
 		var nickname = $('#nickname').val();
 		var realname = $('#realname').val();
 		

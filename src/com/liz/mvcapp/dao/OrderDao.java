@@ -10,6 +10,8 @@ public interface OrderDao {
 	
 	public Boolean check(String orderId);
 	
+	public Boolean delete(String orderId);
+	
 	public Order get(String orderId);
 	
 	public List<Order> getAllByJxId(Integer jxId);

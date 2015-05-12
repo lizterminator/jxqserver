@@ -13,7 +13,10 @@ public class DrivingSchool {
 
 	
 	private String location;
-	private double price;//todo 
+	private double price;
+	
+	private double bendi_price;
+	private double waidi_price;
 	
 	private double discount;
 	private String email;
@@ -33,13 +36,46 @@ public class DrivingSchool {
 	
 	private String pic4;
 	
+	private String jianjie;
+	private String shizililiang;
+	private String fuwuxuexiao;
 	
+	private String jianjie_pic;
+	private String shizililiang_pic;
+	private String fuwuxuexiao_pic;
+	
+		
+	
+	
+
+
+	public double getBendi_price() {
+		return bendi_price;
+	}
+
+
+	public void setBendi_price(double bendi_price) {
+		this.bendi_price = bendi_price;
+	}
+
+
+	public double getWaidi_price() {
+		return waidi_price;
+	}
+
+
+	public void setWaidi_price(double waidi_price) {
+		this.waidi_price = waidi_price;
+	}
+
 
 	public DrivingSchool(Integer id, String name, String password,
 			String mobile, String telephone, String area, String location,
-			double price, double discount, String email, Integer sold,
-			String life, String info, String pic1, String pic2, String pic3,
-			String pic4) {
+			double price, double bendi_price, double waidi_price,
+			double discount, String email, Integer sold, String life,
+			String info, String pic1, String pic2, String pic3, String pic4,
+			String jianjie, String shizililiang, String fuwuxuexiao,
+			String jianjie_pic, String shizililiang_pic, String fuwuxuexiao_pic) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,6 +85,8 @@ public class DrivingSchool {
 		this.area = area;
 		this.location = location;
 		this.price = price;
+		this.bendi_price = bendi_price;
+		this.waidi_price = waidi_price;
 		this.discount = discount;
 		this.email = email;
 		this.sold = sold;
@@ -58,9 +96,75 @@ public class DrivingSchool {
 		this.pic2 = pic2;
 		this.pic3 = pic3;
 		this.pic4 = pic4;
+		this.jianjie = jianjie;
+		this.shizililiang = shizililiang;
+		this.fuwuxuexiao = fuwuxuexiao;
+		this.jianjie_pic = jianjie_pic;
+		this.shizililiang_pic = shizililiang_pic;
+		this.fuwuxuexiao_pic = fuwuxuexiao_pic;
 	}
-	
-	
+
+
+	public String getJianjie() {
+		return jianjie;
+	}
+
+
+	public void setJianjie(String jianjie) {
+		this.jianjie = jianjie;
+	}
+
+
+	public String getShizililiang() {
+		return shizililiang;
+	}
+
+
+	public void setShizililiang(String shizililiang) {
+		this.shizililiang = shizililiang;
+	}
+
+
+	public String getFuwuxuexiao() {
+		return fuwuxuexiao;
+	}
+
+
+	public void setFuwuxuexiao(String fuwuxuexiao) {
+		this.fuwuxuexiao = fuwuxuexiao;
+	}
+
+
+	public String getJianjie_pic() {
+		return jianjie_pic;
+	}
+
+
+	public void setJianjie_pic(String jianjie_pic) {
+		this.jianjie_pic = jianjie_pic;
+	}
+
+
+	public String getShizililiang_pic() {
+		return shizililiang_pic;
+	}
+
+
+	public void setShizililiang_pic(String shizililiang_pic) {
+		this.shizililiang_pic = shizililiang_pic;
+	}
+
+
+	public String getFuwuxuexiao_pic() {
+		return fuwuxuexiao_pic;
+	}
+
+
+	public void setFuwuxuexiao_pic(String fuwuxuexiao_pic) {
+		this.fuwuxuexiao_pic = fuwuxuexiao_pic;
+	}
+
+
 	public String getPic1() {
 		return pic1;
 	}
@@ -255,11 +359,19 @@ public class DrivingSchool {
 		return "DrivingSchool [id=" + id + ", name=" + name + ", password="
 				+ password + ", mobile=" + mobile + ", telephone=" + telephone
 				+ ", area=" + area + ", location=" + location + ", price="
-				+ price + ", discount=" + discount + ", email=" + email
+				+ price + ", bendi_price=" + bendi_price + ", waidi_price="
+				+ waidi_price + ", discount=" + discount + ", email=" + email
 				+ ", sold=" + sold + ", life=" + life + ", info=" + info
 				+ ", pic1=" + pic1 + ", pic2=" + pic2 + ", pic3=" + pic3
-				+ ", pic4=" + pic4 + "]";
+				+ ", pic4=" + pic4 + ", jianjie=" + jianjie + ", shizililiang="
+				+ shizililiang + ", fuwuxuexiao=" + fuwuxuexiao
+				+ ", jianjie_pic=" + jianjie_pic + ", shizililiang_pic="
+				+ shizililiang_pic + ", fuwuxuexiao_pic=" + fuwuxuexiao_pic
+				+ "]";
 	}
+
+
+	
 
 	
 
